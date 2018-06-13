@@ -6,31 +6,39 @@
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 22:12:21 by amelihov          #+#    #+#             */
-/*   Updated: 2018/05/14 17:41:17 by amelihov         ###   ########.fr       */
+/*   Updated: 2018/05/15 19:26:35 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "scene.h"
 #include "sphere.h"
 #include "cylinder.h"
+#include "errors.h"
 #include <stdlib.h>
 t_scene	*get_scene1(void);
 t_scene	*get_scene2(void);
+t_scene	*get_scene3(void);
+t_scene	*get_scene4(void);
 
-static void		*scenes_initial_data_err_exit(t_scene **scenes)
+void	scene_arr_delete(t_scene **scenes);
+
+static void		*scenes_initial_data_err_exit(t_scene **scenes, char *err)
 {
-	(void)scenes;
+	scene_arr_delete(scenes);
+	try_set_err(err);
 	return (NULL);
 }
 
-#define NSCENES 2
+#define NSCENES 4
 
 static t_scene	*get_scene(short i)
 {
 	static	t_scene *(*scenes_getters[NSCENES])(void) =
 	{
 		get_scene1,
-		get_scene2
+		get_scene2,
+		get_scene3,
+		get_scene4
 	};
 
 	if (i < 0 || i >= NSCENES)
@@ -51,7 +59,7 @@ t_scene			**scenes_initial_data(void)
 	{
 		scenes[i] = get_scene(i);
 		if (!scenes[i])
-			return (scenes_initial_data_err_exit(scenes));
+			return (scenes_initial_data_err_exit(scenes, SCENES_INITIAL_FAIL));
 		i++;
 	}
 	return (scenes);

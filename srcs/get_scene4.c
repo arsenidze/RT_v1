@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_scene1.c                                       :+:      :+:    :+:   */
+/*   get_scene4.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 22:13:55 by amelihov          #+#    #+#             */
-/*   Updated: 2018/06/07 21:34:23 by amelihov         ###   ########.fr       */
+/*   Updated: 2018/06/01 17:07:42 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,30 +17,34 @@
 #include "plane.h"
 #include <stdlib.h>
 
-#define FIRST_SCENE_NOBJECTS	1
-#define FIRST_SCENE_NLIGHTS		1
+#define FOURTH_SCENE_NOBJECTS	0
+#define FOURTH_SCENE_NLIGHTS	0
 
 #define INVER_SQRT_TWO	0.70710678118
 
-t_scene	*get_scene1(void)
+t_scene	*get_scene4(void)
 {
 	t_scene		*scene;
 	t_camera	*camera;
 	t_object3d	**objects;
 	t_light		**lights;
 
-	if (!(objects = malloc(sizeof(t_object3d *) * (FIRST_SCENE_NOBJECTS + 1))))
+	if (!(objects = malloc(sizeof(t_object3d *) * (FOURTH_SCENE_NOBJECTS + 1))))
 		return (NULL);
-	objects[FIRST_SCENE_NOBJECTS] = NULL;
-	if (!(lights = malloc(sizeof(t_light *) * (FIRST_SCENE_NLIGHTS + 1))))
+	objects[FOURTH_SCENE_NOBJECTS] = NULL;
+	if (!(lights = malloc(sizeof(t_light *) * (FOURTH_SCENE_NLIGHTS + 1))))
 		return (NULL);
-	lights[FIRST_SCENE_NLIGHTS] = NULL;
+	lights[FOURTH_SCENE_NLIGHTS] = NULL;
 	camera = camera_new(CAMERA_NEW_POS, CAMERA_NEW_DIR, CAMERA_NEW_UP);
-	objects[0] = object3d_new(COLOR(0x00000000),
-		(t_vect3d[3]){VECT3D(0.1, 0., 0.2), VECT3D(0.3, 0.3, 0.), VECT3D(0.1, 0., 0.)},
-		PRIMITIVE(sphere, VECT3D(0, 0, 0), 100));
-	lights[0] = light_new(VECT3D(200, 0, 200),
-			(t_vect3d[3]){VECT3D(1, 1, 1), VECT3D(1, 1, 1), VECT3D(1, 1, 1)});
+//	objects[0] = object3d_new(COLOR(0x00003333),
+//		PRIMITIVE(sphere, VECT3D(0, 0, 0), 50));
+//	objects[1] = object3d_new(COLOR(0x00220022),
+//		PRIMITIVE(sphere, VECT3D(0, -200, 100), 50));
+//	objects[2] = object3d_new(COLOR(0x00333300),
+//		PRIMITIVE(plane, VECT3D(0, 0, -100),VECT3D(0, 0, 1)));
+
+//	lights[0] = light_new(VECT3D(0, 0, 100), 10);
+//	lights[1] = light_new(VECT3D(-20, -500, 300), 10);
 	scene = scene_new(camera, objects, lights);
 	return (scene);
 }

@@ -1,32 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   light.c                                            :+:      :+:    :+:   */
+/*   get_scene_from_file.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/28 15:52:17 by amelihov          #+#    #+#             */
-/*   Updated: 2018/06/01 14:30:10 by amelihov         ###   ########.fr       */
+/*   Created: 2018/06/12 22:16:57 by amelihov          #+#    #+#             */
+/*   Updated: 2018/06/12 22:52:57 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "light.h"
+#include <string.h>
+#include <errno.h>
+#include "scene.h"
+#include "parser.h"
 #include "libft.h"
-#include <stdlib.h>
+#include "errors.h"
 
-void	light_delete(t_light *light)
+t_scene *get_scene_from_file(const char *file_name)
 {
-	free(light);
-}
+	t_scene	*scene;
+	char 	**lines;
 
-t_light	*light_new(t_vect3d pos, t_vect3d components[3])
-{
-	t_light	*light;
-
-	if (!(light = malloc(sizeof(t_light))))
+	if (!(lines = read_file(file_name)))
+	{
+		try_set_err(strerror(errno));
 		return (NULL);
-	light->pos = pos;
-//	light->components = components;
-	ft_memcpy(light->components, components, sizeof(t_vect3d) * 3);
-	return (light);
+	}
+	if (!(scene = parser_parse_scene(lines)))
+	{
+		try_set_err(PARSER_PARSE_FAIL);
+	}
+	free_strs(lines, 0);
+	return (scene);
 }

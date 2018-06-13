@@ -6,7 +6,7 @@
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/27 19:49:59 by amelihov          #+#    #+#             */
-/*   Updated: 2018/04/28 15:57:16 by amelihov         ###   ########.fr       */
+/*   Updated: 2018/06/07 21:34:28 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,20 @@
 
 # include "vect3d.h"
 
-typedef double	t_intensity;
+/*
+**	components indexs
+*/
+#define L_AMBIENT		0
+#define L_DIFFUSE		1
+#define L_SPECULAR		2
 
 typedef struct	s_light
 {
 	t_vect3d	pos;
-	t_intensity	intensity;
+	t_vect3d	components[3];
 }				t_light;
 
-t_light			*light_new(t_vect3d pos, t_intensity intensity);
-void			light_clear(t_light *light);
+t_light			*light_new(t_vect3d pos, t_vect3d components[3]);
+void			light_delete(t_light *light);
 
 #endif

@@ -6,14 +6,15 @@
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 11:49:06 by amelihov          #+#    #+#             */
-/*   Updated: 2018/05/14 17:15:46 by amelihov         ###   ########.fr       */
+/*   Updated: 2018/06/01 15:02:12 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "object3d.h"
+#include "libft.h"
 #include <stdlib.h>
 
-t_object3d	*object3d_new(t_color color, void *var_arg[])
+t_object3d	*object3d_new(t_color color, t_vect3d k[3], void *var_arg[])
 {
 	t_object3d	*new_obj;
 
@@ -25,6 +26,7 @@ t_object3d	*object3d_new(t_color color, void *var_arg[])
 	new_obj->intersection = var_arg[1];
 	new_obj->get_normal = var_arg[2];
 	new_obj->delete_primitive = var_arg[3];
+	ft_memcpy(new_obj->k, k, sizeof(t_vect3d) * 3);
 	return (new_obj);
 }
 

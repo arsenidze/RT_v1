@@ -6,7 +6,7 @@
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 18:11:34 by amelihov          #+#    #+#             */
-/*   Updated: 2018/05/14 16:03:22 by amelihov         ###   ########.fr       */
+/*   Updated: 2018/06/07 19:40:42 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ typedef double	t_vect3d __attribute__((vector_size(sizeof(double)*3)));
 									v1[X] * v2[Y] - v1[Y] * v2[X])
 # define VECT3D_COS(v1, v2) (VECT3D_DOT(v1, v2) / (VECT3D_LEN(v1) * VECT3D_LEN(v2)))
 # define VECT3D_COS_NORMED(v1, v2) VECT3D_DOT(v1, v2)
+# define VECT3D_APPLY(v,f,...) VECT3D(f(v[X],__VA_ARGS__),f(v[Y],__VA_ARGS__),f(v[Z],__VA_ARGS__))
+//# define VECT3D_CLAMP(v,a,b) VECT3D(clamp(v[X],a,b),clamp(v[Y],a,b),clamp(v[Z],a,b))
 //t_vect3d		vect3d_cross(t_vect3d v1, t_vect3d v2);
 
 #endif

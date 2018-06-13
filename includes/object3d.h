@@ -6,7 +6,7 @@
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 20:14:35 by amelihov          #+#    #+#             */
-/*   Updated: 2018/05/14 16:52:14 by amelihov         ###   ########.fr       */
+/*   Updated: 2018/06/01 14:47:53 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@
 
 # define GET_NORMAL(obj, p) obj->get_normal(obj->primitive, p)
 
+# define K_AMBIENT	0
+# define K_DIFFUSE	1
+# define K_SPECULAR 2
+
 typedef struct	s_object3d
 {
 	void		*primitive;
@@ -27,12 +31,13 @@ typedef struct	s_object3d
 	t_vect3d	(*get_normal)(void *primitive, t_vect3d point);
 	void		(*delete_primitive)(void *primitive);
 	t_color		color;
+	t_vect3d	k[3];
 }				t_object3d;
 
 /*
-**	!!! Use PRIMITIVE macro on 'var_args' place !!!
+**	!!! Use PRIMITIVE macro from primitive.h on 'var_args' place !!!
 */
-t_object3d		*object3d_new(t_color color, void *var_args[]);
+t_object3d		*object3d_new(t_color color, t_vect3d k[3], void *var_args[]);
 void			object3d_delete(t_object3d *object3d);
 
 #endif

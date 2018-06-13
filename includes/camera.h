@@ -6,7 +6,7 @@
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 09:44:22 by amelihov          #+#    #+#             */
-/*   Updated: 2018/04/19 14:33:30 by amelihov         ###   ########.fr       */
+/*   Updated: 2018/05/15 19:12:12 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct	s_camera
 	t_vect3d	left;
 }				t_camera;
 
-t_camera		*camera_init(t_vect3d pos, t_vect3d dir, t_vect3d up);
-void			camera_clear(t_camera *camera);
+t_camera		*camera_new(t_vect3d pos, t_vect3d dir, t_vect3d up);
+void			camera_delete(t_camera *camera);
 
 #endif

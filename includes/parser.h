@@ -1,21 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RTv1_defines.h                                     :+:      :+:    :+:   */
+/*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/30 19:36:03 by amelihov          #+#    #+#             */
-/*   Updated: 2018/05/15 19:04:18 by amelihov         ###   ########.fr       */
+/*   Created: 2018/06/08 22:28:41 by amelihov          #+#    #+#             */
+/*   Updated: 2018/06/13 16:56:41 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RTV1_DEFINES_H
-# define RTV1_DEFINES_H
+#ifndef PARSER_H
+# define PARSER_H
 
-#define PROGNAME	"RTv1"
-#define PROGNAME_ERR "RTv1: "
-#define WIN_W		1280
-#define WIN_H		1024
+#include "scene.h"
+
+/*
+**	Identifiers in file
+*/
+#define SCENE_ID	"scene:"
+#define CAMERA_ID	"camera:"
+#define OBJECT_ID	"object:"
+#define LIGHT_ID	"light:"
+
+#define MAX_NOBJECTS	10
+#define MAX_NLIGHTS		10
+
+t_scene		*parser_parse_scene(char **lines);
 
 #endif

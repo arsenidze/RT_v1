@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RTv1_defines.h                                     :+:      :+:    :+:   */
+/*   scenes.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/30 19:36:03 by amelihov          #+#    #+#             */
-/*   Updated: 2018/05/15 19:04:18 by amelihov         ###   ########.fr       */
+/*   Created: 2018/06/10 13:40:00 by amelihov          #+#    #+#             */
+/*   Updated: 2018/06/12 21:14:05 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RTV1_DEFINES_H
-# define RTV1_DEFINES_H
+#ifndef SCENES_H
+# define SCENES_H
 
-#define PROGNAME	"RTv1"
-#define PROGNAME_ERR "RTv1: "
-#define WIN_W		1280
-#define WIN_H		1024
+#include "scene.h"
+
+t_scene		**init_scenes_by_one_scene(t_scene *scene);
+t_scene		**get_default_scenes(void);	
+void		scenes_delete(t_scene **scenes);
 
 #endif

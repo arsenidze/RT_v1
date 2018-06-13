@@ -6,7 +6,7 @@
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 16:32:41 by amelihov          #+#    #+#             */
-/*   Updated: 2018/04/19 14:26:28 by amelihov         ###   ########.fr       */
+/*   Updated: 2018/05/15 18:24:04 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ typedef struct	s_drawer
 	int				pitch;
 }				t_drawer;
 
-t_drawer		*drawer_init(void);
-void			drawer_clear(t_drawer *drawer);
+t_drawer		*drawer_new(void);
+void			drawer_delete(t_drawer *drawer);
 void			drawer_render(t_drawer *drawer);
 
 #endif

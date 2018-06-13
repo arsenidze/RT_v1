@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RTv1_defines.h                                     :+:      :+:    :+:   */
+/*   scene_arr_delete.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/30 19:36:03 by amelihov          #+#    #+#             */
-/*   Updated: 2018/05/15 19:04:18 by amelihov         ###   ########.fr       */
+/*   Created: 2018/05/15 19:06:56 by amelihov          #+#    #+#             */
+/*   Updated: 2018/06/01 17:06:16 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RTV1_DEFINES_H
-# define RTV1_DEFINES_H
+#include "scene.h"
+#include <stdlib.h>
+#include <stdio.h>
+void	scene_arr_delete(t_scene **scenes)
+{
+	int		i;
 
-#define PROGNAME	"RTv1"
-#define PROGNAME_ERR "RTv1: "
-#define WIN_W		1280
-#define WIN_H		1024
-
-#endif
+	i = 0;
+	while (scenes[i])
+	{
+		scene_delete(scenes[i]);
+		i++;
+	}
+	free(scenes);
+}
