@@ -6,7 +6,7 @@
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/10 11:31:07 by amelihov          #+#    #+#             */
-/*   Updated: 2018/06/13 16:56:40 by amelihov         ###   ########.fr       */
+/*   Updated: 2018/06/15 16:41:06 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ short		skip_separator(char *line, int *line_index);
 short		is_correct_eol(char *end_of_line);
 short		is_valid_radius(double radius);
 short		is_valid_slope(double slope);
-short		is_only_whitespaces(char *line);
+short		is_only_whitespaces(char *line, char terminate_char);
 int			str_with_digits_to_int(char *str, int *ndigits);
 
 #endif
