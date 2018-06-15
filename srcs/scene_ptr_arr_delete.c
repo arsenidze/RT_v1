@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   scene_arr_delete.c                                 :+:      :+:    :+:   */
+/*   scene_ptr_arr_delete.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/15 19:06:56 by amelihov          #+#    #+#             */
-/*   Updated: 2018/06/01 17:06:16 by amelihov         ###   ########.fr       */
+/*   Created: 2018/06/15 21:41:14 by amelihov          #+#    #+#             */
+/*   Updated: 2018/06/15 23:15:18 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "scene.h"
+#include "scene_ptr_arr.h"
 #include <stdlib.h>
-#include <stdio.h>
-void	scene_arr_delete(t_scene **scenes)
+
+void	scene_ptr_arr_delete(t_scene **scenes)
 {
 	int		i;
 
+	if (!scenes)
+		return ;
 	i = 0;
 	while (scenes[i])
 	{

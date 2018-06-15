@@ -6,7 +6,7 @@
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/15 16:44:03 by amelihov          #+#    #+#             */
-/*   Updated: 2018/06/15 16:47:35 by amelihov         ###   ########.fr       */
+/*   Updated: 2018/06/15 23:03:24 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,24 @@
 
 int	str_with_digits_to_int(char *str, int *ndigits)
 {
-	int	i;
+	int	sign;
 	int	res;
+	int	i;
 
-	res = 0;
 	i = 0;
+	if (str[0] == '-')
+	{
+		sign = -1;
+		i++;
+	}
+	else
+		sign = 1;
+	res = 0;
 	while (IS_DIGIT(str[i]))
 	{
-		res += 10 * res + (str[i] - '0');
+		res = 10 * res + (str[i] - '0');
 		i++;
 	}
 	*ndigits = i;
-	return (res);
+	return (sign * res);
 }

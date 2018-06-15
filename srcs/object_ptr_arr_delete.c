@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.h                                           :+:      :+:    :+:   */
+/*   object_ptr_arr_delete.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/08 22:28:41 by amelihov          #+#    #+#             */
-/*   Updated: 2018/06/15 23:02:07 by amelihov         ###   ########.fr       */
+/*   Created: 2018/06/15 21:45:06 by amelihov          #+#    #+#             */
+/*   Updated: 2018/06/15 23:13:06 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSER_H
-# define PARSER_H
+#include "object3d.h"
+#include "object_ptr_arr.h"
+#include <stdlib.h>
 
-#include "scene.h"
+void	object_ptr_arr_delete(t_object3d **objects)
+{
+	int		i;
 
-/*
-**	Identifiers in file
-*/
-#define SCENE_ID	"scene"
-#define CAMERA_ID	"camera"
-#define OBJECT_ID	"object"
-#define LIGHT_ID	"light"
-
-#define MAX_NOBJECTS	10
-#define MAX_NLIGHTS		10
-
-t_scene		*parser_parse_scene(char **lines);
-
-#endif
+	if (!objects)
+		return ;
+	i = 0;
+	while (objects[i])
+	{
+		object3d_delete(objects[i]);
+		i++;
+	}
+	free(objects);
+}

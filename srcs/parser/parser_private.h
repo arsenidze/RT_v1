@@ -6,7 +6,7 @@
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/10 11:31:07 by amelihov          #+#    #+#             */
-/*   Updated: 2018/06/15 21:28:54 by amelihov         ###   ########.fr       */
+/*   Updated: 2018/06/15 23:03:17 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,10 @@
 #define NORMAL		"normal"
 #define PRIMIT		"primitive"
 #define SLOPE		"slope"
+#define SPHERE_ID	"sphere"
+#define CYLINDER_ID	"cylinder"
+#define CONE_ID		"cone"
+#define PLANE_ID	"plane"
 
 #define LEFT_BRACKET	'['
 #define RIGHT_BRACKET	']'

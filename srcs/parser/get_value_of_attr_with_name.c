@@ -6,7 +6,7 @@
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/15 15:52:58 by amelihov          #+#    #+#             */
-/*   Updated: 2018/06/15 20:29:23 by amelihov         ###   ########.fr       */
+/*   Updated: 2018/06/15 22:38:44 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ char 	*get_value_of_attr_with_name(char *line, int *line_index,
 	i += name_len;
 	if (line[i] != LEFT_BRACKET)
 		return (NULL);
-	j = i + 1;
+	i += 1;
+	j = i;
 	while (line[j] && line[j] != RIGHT_BRACKET)
 		j++;
 	if (line[j] == '\0')

@@ -6,7 +6,7 @@
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/15 16:03:41 by amelihov          #+#    #+#             */
-/*   Updated: 2018/06/15 20:33:39 by amelihov         ###   ########.fr       */
+/*   Updated: 2018/06/15 22:49:51 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,7 @@ short	parse_attr_of_type_double(char *line, int *line_index,
 	if (!parse_double(value, res, &nchars) || nchars > MAX_NDIGITS_DOUBLE
 		|| *res > MAX_DOUBLE)
 		return (PARSER_FAILURE);
-	*line_index += nchars;
-	if (!is_only_whitespaces(&line[*line_index], RIGHT_BRACKET))
+	if (!is_only_whitespaces(&value[nchars], RIGHT_BRACKET))
 		return (PARSER_FAILURE);
 	return (PARSER_SUCCESS);	
 }

@@ -6,7 +6,7 @@
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/13 12:58:50 by amelihov          #+#    #+#             */
-/*   Updated: 2018/06/15 20:56:04 by amelihov         ###   ########.fr       */
+/*   Updated: 2018/06/15 23:07:16 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ t_light			*parse_light(char *line)
 	t_vect3d	pos;
 	t_vect3d	components[3];
 
-	if (!ft_strnequ(line, "\t"LIGHT_ID, ID_LEN(LIGHT_ID) + 1))
+	if (!ft_strnequ(line, "\t"LIGHT_ID":", ID_LEN(LIGHT_ID) + 2))
 		return (parse_light_failure(PARSER_LIGHT_ID_FAIL));
-	i = ID_LEN(LIGHT_ID) + 1;
+	i = ID_LEN(LIGHT_ID) + 2;
 	if (!parse_attr_of_type_vect3d(line, &i, POS, &pos))
 		return (parse_light_failure(PARSER_LIGHT_POS_FAIL));
 	if (!(skip_separator(line, &i)))

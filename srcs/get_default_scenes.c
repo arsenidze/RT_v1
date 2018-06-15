@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   scenes_initial_data.c                              :+:      :+:    :+:   */
+/*   get_default_scenes.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/10 22:12:21 by amelihov          #+#    #+#             */
-/*   Updated: 2018/05/15 19:26:35 by amelihov         ###   ########.fr       */
+/*   Created: 2018/06/15 21:39:25 by amelihov          #+#    #+#             */
+/*   Updated: 2018/06/15 21:44:41 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "scene.h"
+#include "scene_ptr_arr.h"
 #include "sphere.h"
 #include "cylinder.h"
 #include "errors.h"
@@ -20,11 +21,9 @@ t_scene	*get_scene2(void);
 t_scene	*get_scene3(void);
 t_scene	*get_scene4(void);
 
-void	scene_arr_delete(t_scene **scenes);
-
-static void		*scenes_initial_data_err_exit(t_scene **scenes, char *err)
+static void		*get_default_scenes_err_exit(t_scene **scenes, char *err)
 {
-	scene_arr_delete(scenes);
+	scene_ptr_arr_delete(scenes);
 	try_set_err(err);
 	return (NULL);
 }
@@ -46,7 +45,7 @@ static t_scene	*get_scene(short i)
 	return ((*scenes_getters[i])());
 }
 
-t_scene			**scenes_initial_data(void)
+t_scene			**get_default_scenes(void)
 {
 	int		i;
 	t_scene	**scenes;
@@ -59,7 +58,7 @@ t_scene			**scenes_initial_data(void)
 	{
 		scenes[i] = get_scene(i);
 		if (!scenes[i])
-			return (scenes_initial_data_err_exit(scenes, SCENES_INITIAL_FAIL));
+			return (get_default_scenes_err_exit(scenes, SCENES_INITIAL_FAIL));
 		i++;
 	}
 	return (scenes);

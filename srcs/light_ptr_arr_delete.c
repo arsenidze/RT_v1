@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.h                                           :+:      :+:    :+:   */
+/*   light_ptr_arr_delete.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/08 22:28:41 by amelihov          #+#    #+#             */
-/*   Updated: 2018/06/15 23:02:07 by amelihov         ###   ########.fr       */
+/*   Created: 2018/06/15 21:42:44 by amelihov          #+#    #+#             */
+/*   Updated: 2018/06/15 23:12:52 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSER_H
-# define PARSER_H
+#include "light.h"
+#include "light_ptr_arr.h"
+#include <stdlib.h>
 
-#include "scene.h"
+void	light_ptr_arr_delete(t_light **lights)
+{
+	int		i;
 
-/*
-**	Identifiers in file
-*/
-#define SCENE_ID	"scene"
-#define CAMERA_ID	"camera"
-#define OBJECT_ID	"object"
-#define LIGHT_ID	"light"
-
-#define MAX_NOBJECTS	10
-#define MAX_NLIGHTS		10
-
-t_scene		*parser_parse_scene(char **lines);
-
-#endif
+	if (!lights)
+		return ;
+	i = 0;
+	while (lights[i])
+	{
+		light_delete(lights[i]);
+		i++;
+	}
+	free(lights);
+}

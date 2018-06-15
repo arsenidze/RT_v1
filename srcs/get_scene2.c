@@ -6,7 +6,7 @@
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 22:14:41 by amelihov          #+#    #+#             */
-/*   Updated: 2018/06/01 17:00:37 by amelihov         ###   ########.fr       */
+/*   Updated: 2018/06/15 21:36:26 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_scene	*get_scene2(void)
 
 	camera = camera_new(CAMERA_NEW_POS, CAMERA_NEW_DIR, CAMERA_NEW_UP);
 
-	objects[0] = object3d_new(COLOR(0x00003300),
+	objects[0] = object3d_new(
 		(t_vect3d[3]){VECT3D(1, 0, 0), VECT3D(0, 0, 0), VECT3D(0, 0, 0)},
 		PRIMITIVE(cylinder, VECT3D(0, 0, 0), VECT3D(0, 0, 1), 50));
 //	lights[0] = light_new(VECT3D(100, -100, 0), 10);

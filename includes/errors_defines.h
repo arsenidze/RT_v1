@@ -1,12 +1,11 @@
-/* ************************************************************************** */
-/*                                                                            */
+/* ************************************************************************** */ /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   errors_defines.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 08:59:41 by amelihov          #+#    #+#             */
-/*   Updated: 2018/06/15 21:31:52 by amelihov         ###   ########.fr       */
+/*   Updated: 2018/06/15 21:35:33 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +27,7 @@
 # define PARSER_PARSE_FAIL				"Parsing failed"
 # define PARSER_MEM_FAIL				"Not enough memory for parser"
 # define PARSER_NOT_ENOUGH_LINES		"Not enough lines"
+# define PARSER_NLINES_FAIL				"Wrong number of lines"
 
 # define PARSER_NOBJECTS_FAIL			"Problem with number of lines for objects"
 # define PARSER_NLIGTHS_FAIL			"Problem with number of lines for lights"

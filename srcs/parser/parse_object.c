@@ -6,7 +6,7 @@
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/13 12:58:34 by amelihov          #+#    #+#             */
-/*   Updated: 2018/06/15 21:10:43 by amelihov         ###   ########.fr       */
+/*   Updated: 2018/06/15 23:06:32 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ static t_object3d	*parse_object_failure(char *err)
 static t_object3d	*(*match_primitive_parser(char *value))
 					(char *line, t_vect3d components[3])
 {
-	if (ft_strequ(value, "sphere"))
+	if (ft_strnequ(value, SPHERE_ID, ID_LEN(SPHERE_ID)))
 		return (&parse_sphere);
-	if (ft_strequ(value, "cylinder"))
+	if (ft_strnequ(value, CYLINDER_ID, ID_LEN(CYLINDER_ID)))
 		return (&parse_cylinder);
-	if (ft_strequ(value, "cone"))
+	if (ft_strnequ(value, CONE_ID, ID_LEN(CONE_ID)))
 		return (&parse_cone);
-	if (ft_strequ(value, "plane"))
+	if (ft_strnequ(value, PLANE_ID, ID_LEN(PLANE_ID)))
 		return (&parse_plane);
 	return (NULL);
 }
@@ -42,9 +42,9 @@ t_object3d			*parse_object(char *line)
 	char		*value;
 	t_object3d	*(*primitive_parser)(char *line, t_vect3d components[3]);
 
-	if (!ft_strnequ(line, "\t"OBJECT_ID, ID_LEN(OBJECT_ID) + 1))
+	if (!ft_strnequ(line, "\t"OBJECT_ID":", ID_LEN(OBJECT_ID) + 2))
 		return (parse_object_failure(PARSER_OBJECT_ID_FAIL));
-	i = ID_LEN(OBJECT_ID) + 1;
+	i = ID_LEN(OBJECT_ID) + 2;
 	if (!parse_attr_of_type_vect3d(line, &i, AMBNT, &components[0]))
 		return (parse_object_failure(PARSER_OBJECT_AMBIENT_FAIL));
 	if (!(skip_separator(line, &i)))

@@ -6,7 +6,7 @@
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 11:49:06 by amelihov          #+#    #+#             */
-/*   Updated: 2018/06/01 15:02:12 by amelihov         ###   ########.fr       */
+/*   Updated: 2018/06/15 21:36:55 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,12 @@
 #include "libft.h"
 #include <stdlib.h>
 
-t_object3d	*object3d_new(t_color color, t_vect3d k[3], void *var_arg[])
+t_object3d	*object3d_new(t_vect3d k[3], void *var_arg[])
 {
 	t_object3d	*new_obj;
 
 	if (!(new_obj = malloc(sizeof(t_object3d))))
 		return (NULL);
-	new_obj->color = color;
 	if (!(new_obj->primitive = var_arg[0]))
 		return (NULL);
 	new_obj->intersection = var_arg[1];

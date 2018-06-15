@@ -6,7 +6,7 @@
 #    By: amelihov <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/10/23 18:37:28 by amelihov          #+#    #+#              #
-#    Updated: 2018/03/27 21:32:58 by amelihov         ###   ########.fr        #
+#    Updated: 2018/06/15 21:37:40 by amelihov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,7 @@ SRC = ft_putchar.c ft_putstr.c ft_strcmp.c ft_strlen.c ft_memset.c \
 		ft_abs.c \
 		ft_sign.c \
 		list_strs_del.c \
+		ft_get_size_of_str_arr.c \
 	
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 
