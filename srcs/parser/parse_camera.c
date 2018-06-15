@@ -6,12 +6,14 @@
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/13 12:58:09 by amelihov          #+#    #+#             */
-/*   Updated: 2018/06/13 15:47:45 by amelihov         ###   ########.fr       */
+/*   Updated: 2018/06/15 20:40:01 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "parser_private.h"
 #include "camera.h"
 #include "errors.h"
+#include "libft.h"
 
 static t_camera	*parse_camera_failure(char *err)
 {
@@ -22,10 +24,9 @@ static t_camera	*parse_camera_failure(char *err)
 t_camera		*parse_camera(char *line)
 {
 	int			i;
-	int			nchars;
 	t_vect3d	components[3];
 
-	if (!ft_strequ(line, "\t"CAMERA_ID, ID_LEN(CAMERA_ID) + 1))
+	if (!ft_strnequ(line, "\t"CAMERA_ID, ID_LEN(CAMERA_ID) + 1))
 		return (parse_camera_failure(PARSER_CAMERA_ID_FAIL));
 	i = ID_LEN(CAMERA_ID) + 1;
 	if (!parse_attr_of_type_vect3d(line, &i, POS, &components[0]))

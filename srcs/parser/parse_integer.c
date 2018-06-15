@@ -6,7 +6,7 @@
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/15 16:08:37 by amelihov          #+#    #+#             */
-/*   Updated: 2018/06/15 16:29:59 by amelihov         ###   ########.fr       */
+/*   Updated: 2018/06/15 20:50:05 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ short	parse_integer(char *value, int *res, int *nchars_occupied)
 {
 	int	i;
 	int	int_part;
+	int	ndigits;
 
 	i = 0;
 	while (value[i] && IS_WHITESPACE(value[i]))

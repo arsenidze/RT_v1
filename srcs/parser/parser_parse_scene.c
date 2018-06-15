@@ -6,10 +6,11 @@
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/13 12:57:44 by amelihov          #+#    #+#             */
-/*   Updated: 2018/06/15 15:45:10 by amelihov         ###   ########.fr       */
+/*   Updated: 2018/06/15 21:31:06 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "parser_private.h"
 #include "scene.h"
 #include "errors.h"
 #include "libft.h"
@@ -30,11 +31,11 @@ static t_scene	*prepare_scene(char **lines, int *nlines, int *nobjects,
 	int		ndigits;
 
 	scene = NULL;
-	*nlines = ft_get_str_arr_size(lines);
+	*nlines = ft_get_size_of_str_arr(lines);
 	if (*nlines == -1 || *nlines < MINIMUM_NLINES)
 		return (parser_parse_scene_failure(scene, PARSER_NOT_ENOUGH_LINES));
 	if (!parse_integer(lines[0], nobjects, &ndigits)
-		|| ndigits > MAX_NOBJECT_NDIGITS || *nobjects > MAX_NOBJECTS)
+		|| ndigits > MAX_NOBJECTS_NDIGITS || *nobjects > MAX_NOBJECTS)
 		return (parser_parse_scene_failure(scene, PARSER_NOBJECTS_FAIL));
 	if (!parse_integer(lines[1], nlights, &ndigits)
 		|| ndigits > MAX_NLIGHTS_NDIGITS || *nlights > MAX_NLIGHTS)
@@ -54,14 +55,14 @@ t_scene			*parser_parse_scene(char **lines)
 	int		nlights;
 
 	scene = NULL;
-	if (!(scene = prepare_scene(lines, &nlines, &nobject, &nlights)))
-		return (parser_parse_scene_failure(scene, PARSE_FAIL));
+	if (!(scene = prepare_scene(lines, &nlines, &nobjects, &nlights)))
+		return (parser_parse_scene_failure(scene, PARSER_PARSE_FAIL));
 	if (!(scene->camera = parse_camera(lines[3])))
-		return (parser_parse_scene_failure(scene, PARSE_FAIL));
+		return (parser_parse_scene_failure(scene, PARSER_PARSE_FAIL));
 	if (!(scene->objects = parse_objects(&lines[4], nobjects)))
-		return (parser_parse_scene_failure(scene, PARSE_FAIL));
+		return (parser_parse_scene_failure(scene, PARSER_PARSE_FAIL));
 	if (!(scene->lights = parse_lights(&lines[4 + nobjects],
 		nlights)))
-		return (parser_parse_scene_failure(scene, PARSE_FAIL));
+		return (parser_parse_scene_failure(scene, PARSER_PARSE_FAIL));
 	return (NULL);	
 }

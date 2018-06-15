@@ -6,7 +6,7 @@
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/24 16:56:24 by amelihov          #+#    #+#             */
-/*   Updated: 2018/04/19 12:30:46 by amelihov         ###   ########.fr       */
+/*   Updated: 2018/06/15 21:01:09 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,5 +122,6 @@ void					*ret_free(void **ptr);
 void					*free_strs(char **strs, size_t size);
 char					**read_file(const char *filename);
 void					*list_strs_del(t_list **beg);
+int						ft_get_size_of_str_arr(char **strs);
 
 #endif

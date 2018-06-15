@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_size_of_str_arr.c                           :+:      :+:    :+:   */
+/*   scene_ptr_arr.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/09 22:06:24 by amelihov          #+#    #+#             */
-/*   Updated: 2018/06/15 21:00:56 by amelihov         ###   ########.fr       */
+/*   Created: 2018/06/15 21:26:37 by amelihov          #+#    #+#             */
+/*   Updated: 2018/06/15 21:27:24 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef SCENE_PTR_ARR_H
+# define SCENE_PTR_ARR_H
 
-int	ft_get_size_of_str_arr(char **lines)
-{
-	int		i;
+typedef struct s_scene	t_scene;
 
-	if (!lines)
-		return (-1);
-	i = 0;
-	while (lines[i])
-		i++;
-	return (i);
-}
+void					scene_ptr_arr_delete(t_scene **scenes);
+
+#endif

@@ -6,7 +6,7 @@
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 20:14:35 by amelihov          #+#    #+#             */
-/*   Updated: 2018/06/01 14:47:53 by amelihov         ###   ########.fr       */
+/*   Updated: 2018/06/15 20:49:02 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,13 @@ typedef struct	s_object3d
 				t_vect3d ray_dir, t_vect3d *intersect_point);
 	t_vect3d	(*get_normal)(void *primitive, t_vect3d point);
 	void		(*delete_primitive)(void *primitive);
-	t_color		color;
 	t_vect3d	k[3];
 }				t_object3d;
 
 /*
 **	!!! Use PRIMITIVE macro from primitive.h on 'var_args' place !!!
 */
-t_object3d		*object3d_new(t_color color, t_vect3d k[3], void *var_args[]);
+t_object3d		*object3d_new(t_vect3d k[3], void *var_args[]);
 void			object3d_delete(t_object3d *object3d);
 
 #endif

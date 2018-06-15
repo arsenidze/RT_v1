@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_size_of_str_arr.c                           :+:      :+:    :+:   */
+/*   light_ptr_arr.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/09 22:06:24 by amelihov          #+#    #+#             */
-/*   Updated: 2018/06/15 21:00:56 by amelihov         ###   ########.fr       */
+/*   Created: 2018/06/15 20:56:42 by amelihov          #+#    #+#             */
+/*   Updated: 2018/06/15 21:13:26 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef LIGHT_PTR_ARR_H
+# define LIGHT_PTR_ARR_H
 
-int	ft_get_size_of_str_arr(char **lines)
-{
-	int		i;
+typedef struct s_light	t_light;
 
-	if (!lines)
-		return (-1);
-	i = 0;
-	while (lines[i])
-		i++;
-	return (i);
-}
+typedef t_light**		t_light_ptr_arr;
+
+void					light_ptr_arr_delete(t_light **lights);
+#endif

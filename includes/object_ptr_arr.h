@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_size_of_str_arr.c                           :+:      :+:    :+:   */
+/*   object_ptr_arr.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/09 22:06:24 by amelihov          #+#    #+#             */
-/*   Updated: 2018/06/15 21:00:56 by amelihov         ###   ########.fr       */
+/*   Created: 2018/06/15 21:11:01 by amelihov          #+#    #+#             */
+/*   Updated: 2018/06/15 21:14:47 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef OBJECT_PTR_ARR_H
+# define OBJECT_PTR_ARR_H
 
-int	ft_get_size_of_str_arr(char **lines)
-{
-	int		i;
+typedef struct s_object3d	t_object3d;
 
-	if (!lines)
-		return (-1);
-	i = 0;
-	while (lines[i])
-		i++;
-	return (i);
-}
+void						object_ptr_arr_delete(t_object3d **objects);
+
+#endif

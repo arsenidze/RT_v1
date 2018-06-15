@@ -6,7 +6,7 @@
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/10 11:31:07 by amelihov          #+#    #+#             */
-/*   Updated: 2018/06/15 16:41:06 by amelihov         ###   ########.fr       */
+/*   Updated: 2018/06/15 21:28:54 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,23 +33,32 @@
 #define AMBNT		"ambient"
 #define DIFF		"diffuse"
 #define SPEC		"specular"
+#define POS			"pos"
 #define RADIUS		"radius"
 #define AXIS		"axis"
 #define DIRECTION	"dir"
 #define UP			"up"
+#define NORMAL		"normal"
 #define PRIMIT		"primitive"
 #define SLOPE		"slope"
 
 #define LEFT_BRACKET	'['
 #define RIGHT_BRACKET	']'
-
 #define SEPARATOR		','
+#define EOL				';'
 
 #define IS_WHITESPACE(c) ((c) == ' ' || (c) == '\t')
 #define IS_DIGIT(c) ((c) >= '0' && (c) <= '9')
 
 #define MAX_NOBJECTS_NDIGITS	2
 #define MAX_NLIGHTS_NDIGITS		2
+
+#define MAX_DOUBLE				9999.9999
+#define MAX_INT					9999
+
+#define MAX_NDIGITS_INT			4
+#define MAX_NDIGITS_FRACT		4
+#define MAX_NDIGITS_DOUBLE		(MAX_NDIGITS_INT + 1 + MAX_NDIGITS_FRACT)
 
 t_camera	*parse_camera(char *line);
 t_object3d	**parse_objects(char **lines, int nobjects_expected);
@@ -64,7 +73,7 @@ t_object3d	*parse_plane(char *line, t_vect3d components[3]);
 short		parse_attr_of_type_vect3d(char *line, int *line_index,
 			char *attr_name, t_vect3d *res);
 short		parse_attr_of_type_double(char *line, int *line_index,
-			char *attr_name, t_vect3d *res);
+			char *attr_name, double *res);
 //char		*get_err_at_line_msg(int line_num);
 char		*get_value_of_attr_with_name(char *line, int *line_index,
 			char *attr_name);

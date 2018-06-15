@@ -6,10 +6,11 @@
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/13 12:58:25 by amelihov          #+#    #+#             */
-/*   Updated: 2018/06/13 15:59:28 by amelihov         ###   ########.fr       */
+/*   Updated: 2018/06/15 21:17:09 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "parser_private.h"
 #include "object3d.h"
 #include "object_ptr_arr.h"
 #include "errors.h"
@@ -26,9 +27,10 @@ t_object3d			**parse_objects(char **lines, int nobjects_nexpected)
 {
 	t_object3d	**objects;
 	int			nlines;
+	int			i;
 
 	objects = NULL;
-	nlines = ft_get_str_arr_size(lines);
+	nlines = ft_get_size_of_str_arr(lines);
 	if (nobjects_nexpected > nlines)
 		return (parse_objects_failure(objects, PARSER_OBJECT_NLINES));
 	if (!(objects = malloc(sizeof(t_object3d *) * (nobjects_nexpected + 1))))
@@ -38,7 +40,7 @@ t_object3d			**parse_objects(char **lines, int nobjects_nexpected)
 	while (i < nobjects_nexpected)
 	{
 		if (!(objects[i] = parse_object(lines[i])))
-			return (parse_objects_failure(objects, PARSE_FAIL));
+			return (parse_objects_failure(objects, PARSER_PARSE_FAIL));
 		i++;
 	}
 	return (objects);
