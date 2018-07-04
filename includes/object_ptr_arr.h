@@ -13,8 +13,8 @@
 #ifndef OBJECT_PTR_ARR_H
 # define OBJECT_PTR_ARR_H
 
-typedef struct s_object3d	t_object3d;
+typedef struct s_object	t_object;
 
-void						object_ptr_arr_delete(t_object3d **objects);
+void						object_ptr_arr_delete(t_object **objects);
 
 #endif

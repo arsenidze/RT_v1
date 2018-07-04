@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   object3d.c                                         :+:      :+:    :+:   */
+/*   object.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,15 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "object3d.h"
+#include "object.h"
 #include "libft.h"
 #include <stdlib.h>
 
-t_object3d	*object3d_new(t_vect3d k[3], void *var_arg[])
+t_object	*object_new(t_vect3d k[3], void *var_arg[])
 {
-	t_object3d	*new_obj;
+	t_object	*new_obj;
 
-	if (!(new_obj = malloc(sizeof(t_object3d))))
+	if (!(new_obj = malloc(sizeof(t_object))))
 		return (NULL);
 	if (!(new_obj->primitive = var_arg[0]))
 		return (NULL);
@@ -29,10 +29,10 @@ t_object3d	*object3d_new(t_vect3d k[3], void *var_arg[])
 	return (new_obj);
 }
 
-void		object3d_delete(t_object3d *object3d)
+void		object_delete(t_object *object)
 {
-	if (!object3d)
+	if (!object)
 		return ;
-	object3d->delete_primitive(object3d->primitive);
-	free(object3d);
+	object->delete_primitive(object->primitive);
+	free(object);
 }

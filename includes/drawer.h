@@ -6,7 +6,7 @@
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 16:32:41 by amelihov          #+#    #+#             */
-/*   Updated: 2018/05/15 18:24:04 by amelihov         ###   ########.fr       */
+/*   Updated: 2018/07/04 15:46:57 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 # define TEX_W WIN_W
 # define TEX_H WIN_H
-# define SET_PIXEL(pixels, x, y, c) {pixels[y * TEX_W + x] = c;}
+# define SET_PIXEL(pixels, x, y, c) {pixels[(y) * TEX_W + (x)] = (c);}
 
 typedef Uint32	t_pixel;
 

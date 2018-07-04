@@ -15,7 +15,7 @@
 
 #include "parser.h"
 #include "camera.h"
-#include "object3d.h"
+#include "object.h"
 #include "light.h"
 #include "vect3d.h"
 
@@ -65,14 +65,14 @@
 #define MAX_NDIGITS_DOUBLE		(MAX_NDIGITS_INT + 1 + MAX_NDIGITS_FRACT)
 
 t_camera	*parse_camera(char *line);
-t_object3d	**parse_objects(char **lines, int nobjects_expected);
+t_object	**parse_objects(char **lines, int nobjects_expected);
 t_light		**parse_lights(char **lines, int nlights_expected);
-t_object3d	*parse_object(char *line);
+t_object	*parse_object(char *line);
 t_light		*parse_light(char *line);
-t_object3d	*parse_sphere(char *line, t_vect3d components[3]);
-t_object3d	*parse_cylinder(char *line, t_vect3d components[3]);
-t_object3d	*parse_cone(char *line, t_vect3d components[3]);
-t_object3d	*parse_plane(char *line, t_vect3d components[3]);
+t_object	*parse_sphere(char *line, t_vect3d components[3]);
+t_object	*parse_cylinder(char *line, t_vect3d components[3]);
+t_object	*parse_cone(char *line, t_vect3d components[3]);
+t_object	*parse_plane(char *line, t_vect3d components[3]);
 
 short		parse_attr_of_type_vect3d(char *line, int *line_index,
 			char *attr_name, t_vect3d *res);

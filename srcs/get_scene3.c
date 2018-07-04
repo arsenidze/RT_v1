@@ -26,17 +26,17 @@ t_scene	*get_scene3(void)
 {
 	t_scene		*scene;
 	t_camera	*camera;
-	t_object3d	**objects;
+	t_object	**objects;
 	t_light		**lights;
 
-	if (!(objects = malloc(sizeof(t_object3d *) * (THIRD_SCENE_NOBJECTS + 1))))
+	if (!(objects = malloc(sizeof(t_object *) * (THIRD_SCENE_NOBJECTS + 1))))
 		return (NULL);
 	objects[THIRD_SCENE_NOBJECTS] = NULL;
 	if (!(lights = malloc(sizeof(t_light *) * (THIRD_SCENE_NLIGHTS + 1))))
 		return (NULL);
 	lights[THIRD_SCENE_NLIGHTS] = NULL;
 	camera = camera_new(CAMERA_NEW_POS, CAMERA_NEW_DIR, CAMERA_NEW_UP);
-	//objects[0] = object3d_new(COLOR(0x00330000),
+	//objects[0] = object_new(COLOR(0x00330000),
 	//	PRIMITIVE(cone, VECT3D(0, 0, 0), VECT3D(0, 0, 1), 1));
 	//lights[0] = light_new(VECT3D(100, -50, 20), 10);
 	scene = scene_new(camera, objects, lights);

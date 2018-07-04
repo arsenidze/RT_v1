@@ -11,18 +11,18 @@
 /* ************************************************************************** */
 
 #include "parser_private.h"
-#include "object3d.h"
+#include "object.h"
 #include "cylinder.h"
 #include "errors.h"
 #include <stddef.h>
 
-static t_object3d	*parse_cylinder_failure(char *err)
+static t_object	*parse_cylinder_failure(char *err)
 {
 	try_set_err(err);
 	return (NULL);
 }
 
-t_object3d			*parse_cylinder(char *line, t_vect3d components[3])
+t_object			*parse_cylinder(char *line, t_vect3d components[3])
 {
 	int			i;
 	t_vect3d	pos;
@@ -42,5 +42,5 @@ t_object3d			*parse_cylinder(char *line, t_vect3d components[3])
 		return (parse_cylinder_failure(PARSER_CYLINDER_RADIUS_FAIL));
 	if (!is_correct_eol(&line[i]))
 		return (parse_cylinder_failure(PARSER_CYLINDER_EOL_FAIL));
-	return (object3d_new(components, PRIMITIVE(cylinder, pos, axis, radius)));
+	return (object_new(components, PRIMITIVE(cylinder, pos, axis, radius)));
 }

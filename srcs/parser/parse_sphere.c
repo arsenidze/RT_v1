@@ -11,18 +11,18 @@
 /* ************************************************************************** */
 
 #include "parser_private.h"
-#include "object3d.h"
+#include "object.h"
 #include "sphere.h"
 #include "errors.h"
 #include <stddef.h>
 
-static t_object3d	*parse_sphere_failure(char *err)
+static t_object	*parse_sphere_failure(char *err)
 {
 	try_set_err(err);
 	return (NULL);
 }
 
-t_object3d			*parse_sphere(char *line, t_vect3d components[3])
+t_object			*parse_sphere(char *line, t_vect3d components[3])
 {
 	int			i;
 	t_vect3d	pos;
@@ -37,5 +37,5 @@ t_object3d			*parse_sphere(char *line, t_vect3d components[3])
 		return (parse_sphere_failure(PARSER_SPHERE_RADIUS_FAIL));
 	if (!is_correct_eol(&line[i]))
 		return (parse_sphere_failure(PARSER_SPHERE_EOL_FAIL));
-	return (object3d_new(components, PRIMITIVE(sphere, pos, radius)));
+	return (object_new(components, PRIMITIVE(sphere, pos, radius)));
 }

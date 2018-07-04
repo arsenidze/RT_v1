@@ -11,17 +11,17 @@
 /* ************************************************************************** */
 
 #include "parser_private.h"
-#include "object3d.h"
+#include "object.h"
 #include "errors.h"
 #include "libft.h"
 
-static t_object3d	*parse_object_failure(char *err)
+static t_object	*parse_object_failure(char *err)
 {
 	try_set_err(err);
 	return (NULL);
 }
 
-static t_object3d	*(*match_primitive_parser(char *value))
+static t_object	*(*match_primitive_parser(char *value))
 					(char *line, t_vect3d components[3])
 {
 	if (ft_strnequ(value, SPHERE_ID, ID_LEN(SPHERE_ID)))
@@ -35,12 +35,12 @@ static t_object3d	*(*match_primitive_parser(char *value))
 	return (NULL);
 }
 
-t_object3d			*parse_object(char *line)
+t_object			*parse_object(char *line)
 {
 	int			i;
 	t_vect3d	components[3];
 	char		*value;
-	t_object3d	*(*primitive_parser)(char *line, t_vect3d components[3]);
+	t_object	*(*primitive_parser)(char *line, t_vect3d components[3]);
 
 	if (!ft_strnequ(line, "\t"OBJECT_ID":", ID_LEN(OBJECT_ID) + 2))
 		return (parse_object_failure(PARSER_OBJECT_ID_FAIL));

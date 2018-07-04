@@ -11,21 +11,21 @@
 /* ************************************************************************** */
 
 #include "parser_private.h"
-#include "object3d.h"
+#include "object.h"
 #include "object_ptr_arr.h"
 #include "errors.h"
 #include "libft.h"
 
-static t_object3d	**parse_objects_failure(t_object3d **objects, char *err)
+static t_object	**parse_objects_failure(t_object **objects, char *err)
 {
 	try_set_err(err);
 	object_ptr_arr_delete(objects);
 	return (NULL);
 }
 
-t_object3d			**parse_objects(char **lines, int nobjects_nexpected)
+t_object			**parse_objects(char **lines, int nobjects_nexpected)
 {
-	t_object3d	**objects;
+	t_object	**objects;
 	int			nlines;
 	int			i;
 
@@ -33,7 +33,7 @@ t_object3d			**parse_objects(char **lines, int nobjects_nexpected)
 	nlines = ft_get_size_of_str_arr(lines);
 	if (nobjects_nexpected > nlines)
 		return (parse_objects_failure(objects, PARSER_OBJECT_NLINES));
-	if (!(objects = malloc(sizeof(t_object3d *) * (nobjects_nexpected + 1))))
+	if (!(objects = malloc(sizeof(t_object *) * (nobjects_nexpected + 1))))
 		return (parse_objects_failure(objects, PARSER_MEM_FAIL));
 	objects[nobjects_nexpected] = NULL;
 	i = 0;

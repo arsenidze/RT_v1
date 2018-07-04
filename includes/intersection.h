@@ -14,7 +14,7 @@
 # define INTERSECTION_H
 
 #include "vect3d.h"
-#include "object3d.h"
+#include "object.h"
 
 typedef struct	s_intersection
 {
@@ -22,7 +22,7 @@ typedef struct	s_intersection
 	t_vect3d	dest;
 	t_vect3d	ray_dir;
 	t_vect3d	normal;
-	t_object3d	*hit_object;
+	t_object	*hit_object;
 }				t_intersection;
 
 #endif

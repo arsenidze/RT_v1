@@ -6,7 +6,7 @@
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 10:52:52 by amelihov          #+#    #+#             */
-/*   Updated: 2018/05/14 17:18:47 by amelihov         ###   ########.fr       */
+/*   Updated: 2018/07/04 11:25:10 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ t_vect3d	sphere_get_normal(void *v_sphere, t_vect3d point)
 	return (normal);
 }
 
-//void		sphere_fill_coeff(t_object3d *obj, double c[3], t_vect3d start,
+//void		sphere_fill_coeff(t_object *obj, double c[3], t_vect3d start,
 //				t_vect3d ray_dir)
 //{
 //	t_sphere	*sphere;

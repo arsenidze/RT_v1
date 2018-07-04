@@ -14,7 +14,7 @@
 # define SCENE_H
 
 # include "camera.h"
-# include "object3d.h"
+# include "object.h"
 # include "light.h"
 
 /*
@@ -29,11 +29,11 @@
 typedef struct	s_scene
 {
 	t_camera	*camera;
-	t_object3d	**objects;
+	t_object	**objects;
 	t_light		**lights;
 }				t_scene;
 
-t_scene			*scene_new(t_camera *camera, t_object3d **objects,
+t_scene			*scene_new(t_camera *camera, t_object **objects,
 				t_light **lights);
 void			scene_delete(t_scene *scene);
 

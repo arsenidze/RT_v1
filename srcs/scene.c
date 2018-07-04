@@ -6,7 +6,7 @@
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 17:55:45 by amelihov          #+#    #+#             */
-/*   Updated: 2018/06/01 17:07:03 by amelihov         ###   ########.fr       */
+/*   Updated: 2018/07/04 11:24:44 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	scene_delete(t_scene *scene)
 	{
 		i = -1;
 		while (scene->objects[++i])
-			object3d_delete(scene->objects[i]);
+			object_delete(scene->objects[i]);
 		free(scene->objects);
 	}
 	if (scene->lights)
@@ -48,7 +48,7 @@ static void		*scene_err_exit(t_scene *scene, char *err)
 	return (NULL);
 }
 
-t_scene			*scene_new(t_camera *camera, t_object3d **objects,
+t_scene			*scene_new(t_camera *camera, t_object **objects,
 				t_light **lights)
 {
 	t_scene	*scene;

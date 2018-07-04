@@ -6,7 +6,7 @@
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/15 16:14:24 by amelihov          #+#    #+#             */
-/*   Updated: 2018/06/15 20:35:27 by amelihov         ###   ########.fr       */
+/*   Updated: 2018/07/04 13:15:37 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,6 @@ short	parse_double(char *value, double *res, int *nchars_occupied)
 		return (PARSER_SUCCESS);
 	if (ndigits_fract_part > MAX_NDIGITS_FRACT)
 		return (PARSER_FAILURE);
-	*res += fract_part / my_pow(10, ndigits_fract_part);
+	*res += (double)fract_part / my_pow(10, ndigits_fract_part);
 	return (PARSER_SUCCESS);
 }

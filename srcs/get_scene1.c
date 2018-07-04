@@ -6,7 +6,7 @@
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 22:13:55 by amelihov          #+#    #+#             */
-/*   Updated: 2018/06/15 21:36:08 by amelihov         ###   ########.fr       */
+/*   Updated: 2018/07/04 11:51:22 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,19 @@ t_scene	*get_scene1(void)
 {
 	t_scene		*scene;
 	t_camera	*camera;
-	t_object3d	**objects;
+	t_object	**objects;
 	t_light		**lights;
 
-	if (!(objects = malloc(sizeof(t_object3d *) * (FIRST_SCENE_NOBJECTS + 1))))
+	if (!(objects = malloc(sizeof(t_object *) * (FIRST_SCENE_NOBJECTS + 1))))
 		return (NULL);
 	objects[FIRST_SCENE_NOBJECTS] = NULL;
 	if (!(lights = malloc(sizeof(t_light *) * (FIRST_SCENE_NLIGHTS + 1))))
 		return (NULL);
 	lights[FIRST_SCENE_NLIGHTS] = NULL;
 	camera = camera_new(CAMERA_NEW_POS, CAMERA_NEW_DIR, CAMERA_NEW_UP);
-	objects[0] = object3d_new(
-		(t_vect3d[3]){VECT3D(0.1, 0., 0.2), VECT3D(0.3, 0.3, 0.), VECT3D(0.1, 0., 0.)},
-		PRIMITIVE(sphere, VECT3D(0, 0, 0), 100));
+	objects[0] = object_new(
+	(t_vect3d[3]){VECT3D(0.1, 0., 0.2), VECT3D(0.3, 0.3, 0.), VECT3D(0.1, 0., 0.)},
+		PRIMITIVE(sphere, VECT3D(0, 100, 0), 100));
 	lights[0] = light_new(VECT3D(200, 0, 200),
 			(t_vect3d[3]){VECT3D(1, 1, 1), VECT3D(1, 1, 1), VECT3D(1, 1, 1)});
 	scene = scene_new(camera, objects, lights);

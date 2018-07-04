@@ -11,18 +11,18 @@
 /* ************************************************************************** */
 
 #include "parser_private.h"
-#include "object3d.h"
+#include "object.h"
 #include "cone.h"
 #include "errors.h"
 #include <stddef.h>
 
-static t_object3d	*parse_cone_failure(char *err)
+static t_object	*parse_cone_failure(char *err)
 {
 	try_set_err(err);
 	return (NULL);
 }
 
-t_object3d			*parse_cone(char *line, t_vect3d components[3])
+t_object			*parse_cone(char *line, t_vect3d components[3])
 {
 	int			i;
 	t_vect3d	pos;
@@ -42,5 +42,5 @@ t_object3d			*parse_cone(char *line, t_vect3d components[3])
 		return (parse_cone_failure(PARSER_CONE_SLOPE_FAIL));
 	if (!is_correct_eol(&line[i]))
 		return (parse_cone_failure(PARSER_CONE_EOL_FAIL));
-	return (object3d_new(components, PRIMITIVE(cone, pos, axis, slope)));
+	return (object_new(components, PRIMITIVE(cone, pos, axis, slope)));
 }

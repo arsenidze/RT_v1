@@ -10,11 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "object3d.h"
+#include "object.h"
 #include "object_ptr_arr.h"
 #include <stdlib.h>
 
-void	object_ptr_arr_delete(t_object3d **objects)
+void	object_ptr_arr_delete(t_object **objects)
 {
 	int		i;
 
@@ -23,7 +23,7 @@ void	object_ptr_arr_delete(t_object3d **objects)
 	i = 0;
 	while (objects[i])
 	{
-		object3d_delete(objects[i]);
+		object_delete(objects[i]);
 		i++;
 	}
 	free(objects);
