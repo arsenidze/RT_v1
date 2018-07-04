@@ -6,7 +6,7 @@
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/30 20:58:54 by amelihov          #+#    #+#             */
-/*   Updated: 2018/07/04 13:53:41 by amelihov         ###   ########.fr       */
+/*   Updated: 2018/07/04 22:41:22 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ t_color	trace_ray(t_scene *scene, t_vect3d ray_dir)
 	t_intersection	intersection;
 	t_color			res_color;
 
-	if (find_closest_intersection(scene, scene->camera->pos, ray_dir, &intersection))
+	if (find_closest_intersection(scene, scene->camera->pos, ray_dir,
+		&intersection))
 	{
 		res_color = apply_light(scene, &intersection);
 	//	res_color = intersection.hit_object->color;

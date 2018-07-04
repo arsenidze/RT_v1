@@ -6,7 +6,7 @@
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 18:11:34 by amelihov          #+#    #+#             */
-/*   Updated: 2018/07/04 12:43:44 by amelihov         ###   ########.fr       */
+/*   Updated: 2018/07/04 18:35:47 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,9 @@ typedef double	t_vect3d __attribute__((vector_size(sizeof(double)*3)));
 # define VECT3D_APPLY(v,f,...) VECT3D(f(v[X],__VA_ARGS__),f(v[Y],__VA_ARGS__),f(v[Z],__VA_ARGS__))
 //# define VECT3D_CLAMP(v,a,b) VECT3D(clamp(v[X],a,b),clamp(v[Y],a,b),clamp(v[Z],a,b))
 //t_vect3d		vect3d_cross(t_vect3d v1, t_vect3d v2);
+t_vect3d	vect3d_mult_on_matrix(t_vect3d v, t_vect3d m[3]);
+void		vect3d_fill_rotateOX_matrix(t_vect3d m[3], double angel);
+void		vect3d_fill_rotateOY_matrix(t_vect3d m[3], double angel);
+void		vect3d_fill_rotateOZ_matrix(t_vect3d m[3], double angel);
 
 #endif

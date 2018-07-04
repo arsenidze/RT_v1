@@ -6,12 +6,13 @@
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 09:15:52 by amelihov          #+#    #+#             */
-/*   Updated: 2018/07/04 16:07:51 by amelihov         ###   ########.fr       */
+/*   Updated: 2018/07/04 20:48:44 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "drawer.h"
 #include "scene.h"
+#include "userinput.h"
 #include "vect3d.h"
 
 t_color			trace_ray(t_scene *scene, t_vect3d ray_dir);
@@ -65,15 +66,14 @@ void			fill_square_of_pixels(t_pixel *pixels, t_square square,
 	}
 }
 
-void			render_scene(t_pixel *pixels, t_scene *scene)
+void			render_scene(t_pixel *pixels, t_scene *scene,
+				t_userinput *userinput)
 {
 	int			j;
 	int			i;
 	t_vect3d	ray_dir;
 	t_color		color;
-	int			step_in_pixels;
 
-	step_in_pixels = 1;
 	j = 0;
 	while (j < TEX_H)
 	{
@@ -82,14 +82,15 @@ void			render_scene(t_pixel *pixels, t_scene *scene)
 		{
 			ray_dir = get_ray_dir(scene->camera, i, j);
 			color = trace_ray(scene, ray_dir);
-			if (step_in_pixels > 1)
+			if (userinput->step_in_pixels > 1)
 				fill_square_of_pixels(pixels,
-					(t_square){.top = j, .left = i, .size = step_in_pixels},
+					(t_square){.top = j, .left = i,
+								.size = userinput->step_in_pixels},
 					color);
 			else
 				SET_PIXEL(pixels, i, j, color.value);
-			i += step_in_pixels;
+			i += userinput->step_in_pixels;
 		}
-		j += step_in_pixels;
+		j += userinput->step_in_pixels;
 	}
 }

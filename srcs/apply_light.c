@@ -6,7 +6,7 @@
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/09 23:21:16 by amelihov          #+#    #+#             */
-/*   Updated: 2018/07/04 16:09:32 by amelihov         ###   ########.fr       */
+/*   Updated: 2018/07/04 21:05:37 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ t_color	apply_light(t_scene *scene, t_intersection *intersection)
 	double			sq_dist;
 	t_intersection	tmp_intersection;
 
+	(void)tmp_intersection;
 	total_light = VECT3D(0, 0, 0);
 	i = -1;
 	while (scene->lights[++i])
@@ -81,13 +82,13 @@ t_color	apply_light(t_scene *scene, t_intersection *intersection)
 		ray_to_light = scene->lights[i]->pos - intersection->dest;
 		sq_dist = VECT3D_SQ_LEN(ray_to_light);
 		ray_to_light = VECT3D_DIV_ON_SCALAR(ray_to_light, sqrt(sq_dist));
-		if (find_closest_intersection(scene, intersection->dest, ray_to_light,
-			&tmp_intersection))
-		{
-			if (VECT3D_SQ_LEN((scene->lights[i]->pos - tmp_intersection.orig))
-			> VECT3D_SQ_LEN((tmp_intersection.dest - tmp_intersection.orig)))
-				continue ;
-		}
+//		if (find_closest_intersection(scene, intersection->dest, ray_to_light,
+//			&tmp_intersection))
+//		{
+//			if (VECT3D_SQ_LEN((scene->lights[i]->pos - tmp_intersection.orig))
+//			> VECT3D_SQ_LEN((tmp_intersection.dest - tmp_intersection.orig)))
+//				continue ;
+//		}
 		intersection->normal = GET_NORMAL(intersection->hit_object,
 								intersection->dest);
 		total_light += get_diffuse_effect(scene->lights[i], intersection,

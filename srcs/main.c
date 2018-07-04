@@ -6,12 +6,10 @@
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 12:44:34 by amelihov          #+#    #+#             */
-/*   Updated: 2018/07/04 17:01:46 by amelihov         ###   ########.fr       */
+/*   Updated: 2018/07/04 17:14:55 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-#include <errno.h>
 #include "drawer.h"
 #include "scene_ptr_arr.h"
 #include "errors.h"
