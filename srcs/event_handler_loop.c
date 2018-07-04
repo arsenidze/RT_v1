@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   run_event_handler_loop.c                           :+:      :+:    :+:   */
+/*   event_handler_loop.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/19 10:27:15 by amelihov          #+#    #+#             */
-/*   Updated: 2018/06/01 16:56:43 by amelihov         ###   ########.fr       */
+/*   Created: 2018/07/04 17:11:55 by amelihov          #+#    #+#             */
+/*   Updated: 2018/07/04 17:12:04 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ short	handle_key_down(int key_code, t_userinput *userinput)
 
 #define LOOP_QUIT	{userinput.quit = 1; break ;}
 
-void	run_event_handler_loop(t_drawer *drawer, t_scene **scenes)
+void	event_handler_loop(t_drawer *drawer, t_scene **scenes)
 {
 //	short		quit;
 	SDL_Event	event;
