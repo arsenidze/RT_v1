@@ -6,7 +6,7 @@
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 22:14:41 by amelihov          #+#    #+#             */
-/*   Updated: 2018/06/15 21:36:26 by amelihov         ###   ########.fr       */
+/*   Updated: 2018/07/05 15:02:52 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <stdlib.h>
 
 #define SECOND_SCENE_NOBJECTS	1
-#define SECOND_SCENE_NLIGHTS	0
+#define SECOND_SCENE_NLIGHTS	1
 
 #define CAMERA_NEW_POS	VECT3D(500, 0, 0)
 #define CAMERA_NEW_DIR	VECT3D(-1, 0, 0)
@@ -41,7 +41,8 @@ t_scene	*get_scene2(void)
 	objects[0] = object_new(
 		(t_vect3d[3]){VECT3D(1, 0, 0), VECT3D(0, 0, 0), VECT3D(0, 0, 0)},
 		PRIMITIVE(cylinder, VECT3D(0, 0, 0), VECT3D(0, 0, 1), 50));
-//	lights[0] = light_new(VECT3D(100, -100, 0), 10);
+	lights[0] = light_new(VECT3D(200, 0, 200),
+			(t_vect3d[3]){VECT3D(1, 0, 0), VECT3D(1, 0, 0), VECT3D(1, 0, 0)});
 	scene = scene_new(camera, objects, lights);
 	return (scene);
 }

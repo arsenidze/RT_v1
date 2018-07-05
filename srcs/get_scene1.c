@@ -6,7 +6,7 @@
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 22:13:55 by amelihov          #+#    #+#             */
-/*   Updated: 2018/07/04 11:51:22 by amelihov         ###   ########.fr       */
+/*   Updated: 2018/07/05 15:03:58 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ t_scene	*get_scene1(void)
 	lights[FIRST_SCENE_NLIGHTS] = NULL;
 	camera = camera_new(CAMERA_NEW_POS, CAMERA_NEW_DIR, CAMERA_NEW_UP);
 	objects[0] = object_new(
-	(t_vect3d[3]){VECT3D(0.1, 0., 0.2), VECT3D(0.3, 0.3, 0.), VECT3D(0.1, 0., 0.)},
+	(t_vect3d[3]){VECT3D(0.1, 0., 0.2), VECT3D(0.3, 0.3, 0.),
+		VECT3D(0.1, 0., 0.)},
 		PRIMITIVE(sphere, VECT3D(0, 100, 0), 100));
 	lights[0] = light_new(VECT3D(200, 0, 200),
 			(t_vect3d[3]){VECT3D(1, 1, 1), VECT3D(1, 1, 1), VECT3D(1, 1, 1)});

@@ -1,10 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */ /*   event_handler_loop.c                               :+:      :+:    :+:   */ /*                                                    +:+ +:+         +:+     */
+/*                                                        :::      ::::::::   */
+/*   event_handler_loop.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/04 17:11:55 by amelihov          #+#    #+#             */
-/*   Updated: 2018/07/04 21:20:33 by amelihov         ###   ########.fr       */
+/*   Created: 2018/07/05 15:01:14 by amelihov          #+#    #+#             */
+/*   Updated: 2018/07/05 15:08:16 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,12 +76,12 @@ short	handle_key_down(int key_code, t_userinput *userinput, t_scene **scenes)
 		userinput->quit = 1;
 		return (!NEED_REDRAW);
 	}
-	if (key_code == SDL_SCANCODE_KP_MULTIPLY)
-		userinput->scene_index= clampi(++userinput->scene_index, 0,
-			userinput->nscenes);
-	if (key_code == SDL_SCANCODE_KP_PLUSMINUS)
+	else if (key_code == SDL_SCANCODE_KP_MULTIPLY)
 		userinput->scene_index = clampi(++userinput->scene_index, 0,
-			userinput->nscenes);
+			userinput->nscenes - 1);
+	else if (key_code == SDL_SCANCODE_KP_DIVIDE)
+		userinput->scene_index = clampi(--userinput->scene_index, 0,
+			userinput->nscenes - 1);
 	else if (key_code == SDL_SCANCODE_KP_PLUS)
 		userinput->step_in_pixels = clampi(++userinput->step_in_pixels, 1,
 			MAX_STEP_IN_PIXELS);
