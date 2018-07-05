@@ -6,20 +6,15 @@
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/15 21:39:25 by amelihov          #+#    #+#             */
-/*   Updated: 2018/06/15 21:44:41 by amelihov         ###   ########.fr       */
+/*   Updated: 2018/07/05 14:47:38 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "default_scenes.h"
 #include "scene.h"
 #include "scene_ptr_arr.h"
-#include "sphere.h"
-#include "cylinder.h"
 #include "errors.h"
 #include <stdlib.h>
-t_scene	*get_scene1(void);
-t_scene	*get_scene2(void);
-t_scene	*get_scene3(void);
-t_scene	*get_scene4(void);
 
 static void		*get_default_scenes_err_exit(t_scene **scenes, char *err)
 {

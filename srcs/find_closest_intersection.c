@@ -6,7 +6,7 @@
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/04 12:15:19 by amelihov          #+#    #+#             */
-/*   Updated: 2018/07/04 13:38:35 by amelihov         ###   ########.fr       */
+/*   Updated: 2018/07/05 11:46:21 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 **	function 'find_closest_intersection' don't fill 'normal' field in 
 **	out 'intersection' parameter for optimization purpose.
 */
-short	find_closest_intersection(t_scene *scene, t_vect3d start, t_vect3d ray_dir,
-		t_intersection *intersection)
+short	find_closest_intersection(t_scene *scene, t_vect3d start,
+		t_vect3d ray_dir, t_intersection *intersection)
 {
 	int			i;
 	t_object	*curr_object;
@@ -39,7 +39,8 @@ short	find_closest_intersection(t_scene *scene, t_vect3d start, t_vect3d ray_dir
 		curr_object = scene->objects[i];
 		if (IS_INTERSECT_OBJ(start, ray_dir, curr_object, &intersect_point)
 			&& (!was_intersect
-				|| VECT3D_SQ_LEN(intersect_point) < VECT3D_SQ_LEN(intersection->dest)))
+				|| VECT3D_SQ_LEN(intersect_point - start)
+					< VECT3D_SQ_LEN(intersection->dest - start)))
 		{
 			was_intersect = 1;
 			intersection->dest = intersect_point;

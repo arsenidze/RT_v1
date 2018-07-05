@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   scene_ptr_arr.h                                    :+:      :+:    :+:   */
+/*   move_current_object.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/15 21:26:37 by amelihov          #+#    #+#             */
-/*   Updated: 2018/07/05 14:47:56 by amelihov         ###   ########.fr       */
+/*   Created: 2018/07/05 13:56:26 by amelihov          #+#    #+#             */
+/*   Updated: 2018/07/05 14:14:37 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCENE_PTR_ARR_H
-# define SCENE_PTR_ARR_H
+#include "scene.h"
+#include "userinput.h"
+#include "vect3d.h"
+#include "sphere.h"
 
-typedef struct s_scene	t_scene;
-
-void					scene_ptr_arr_delete(t_scene **scenes);
-int						scene_ptr_arr_size(t_scene **scenes);
-t_scene					**get_scenes_from_file(const char *file_name);
-
-#endif
+void	move_current_object(t_scene **scenes, t_userinput *userinput,
+		t_vect3d step)
+{
+	((t_sphere*)(scenes[userinput->scene_index]
+		->objects[userinput->object_index]
+		->primitive))->pos += step;
+}

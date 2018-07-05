@@ -6,7 +6,7 @@
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 18:11:34 by amelihov          #+#    #+#             */
-/*   Updated: 2018/07/04 18:35:47 by amelihov         ###   ########.fr       */
+/*   Updated: 2018/07/05 11:37:57 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ typedef double	t_vect3d __attribute__((vector_size(sizeof(double)*3)));
 # define Z 2
 
 # define VECT3D(x, y, z) (t_vect3d){(x), (y), (z)}
-# define VECT3D_MULL_ON_SCALAR(v, a) (v * VECT3D(a, a, a))
-# define VECT3D_DIV_ON_SCALAR(v, a) (v / VECT3D(a, a, a))
-# define VECT3D_LEN(v) (sqrt(v[X] * v[X] + v[Y] * v[Y] + v[Z] * v[Z]))
-# define VECT3D_NORM(v) VECT3D_DIV_ON_SCALAR(v, VECT3D_LEN(v))
-# define VECT3D_SQ_LEN(v) (v[X] * v[X] + v[Y] * v[Y] + v[Z] * v[Z])
+# define VECT3D_MULL_ON_SCALAR(v, a) ((v) * VECT3D(a, a, a))
+# define VECT3D_DIV_ON_SCALAR(v, a) ((v) / VECT3D(a, a, a))
+# define VECT3D_LEN(v) (sqrt(VECT3D_SQ_LEN(v)))
+# define VECT3D_NORM(v) VECT3D_DIV_ON_SCALAR((v), VECT3D_LEN(v))
+# define VECT3D_SQ_LEN(v) ((v)[X] * (v)[X] + (v)[Y] * (v)[Y] + (v)[Z] * (v)[Z])
 /*
 # define VECT3D_ROTATE(v, a) ((t_vect3d){V3ROTATE_X(v, a), V3ROTATE_Y(v, a)})
 # define V3ROTATE_X(v, a) (v[X] * cos(a) - v[Y] * sin(a))

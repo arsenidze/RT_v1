@@ -6,16 +6,16 @@
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 12:44:34 by amelihov          #+#    #+#             */
-/*   Updated: 2018/07/04 17:14:55 by amelihov         ###   ########.fr       */
+/*   Updated: 2018/07/05 14:50:13 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "drawer.h"
 #include "scene_ptr_arr.h"
+#include "default_scenes.h"
+#include "event_handler_loop.h"
 #include "errors.h"
 #include "libft.h"
-
-void	event_handler_loop(t_drawer *drawer, t_scene **scenes);
 
 static int	print_usage(void)
 {

@@ -1,36 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_scene_from_file.c                              :+:      :+:    :+:   */
+/*   default_scenes.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/12 22:16:57 by amelihov          #+#    #+#             */
-/*   Updated: 2018/06/12 22:52:57 by amelihov         ###   ########.fr       */
+/*   Created: 2018/07/05 14:45:18 by amelihov          #+#    #+#             */
+/*   Updated: 2018/07/05 14:48:31 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-#include <errno.h>
+#ifndef DEFAULT_SCENES
+# define DEFAULT_SCENES
+
 #include "scene.h"
-#include "parser.h"
-#include "libft.h"
-#include "errors.h"
 
-t_scene *get_scene_from_file(const char *file_name)
-{
-	t_scene	*scene;
-	char 	**lines;
+t_scene		**get_default_scenes(void);
+t_scene		*get_scene1(void);
+t_scene		*get_scene2(void);
+t_scene		*get_scene3(void);
+t_scene		*get_scene4(void);
 
-	if (!(lines = read_file(file_name)))
-	{
-		try_set_err(strerror(errno));
-		return (NULL);
-	}
-	if (!(scene = parser_parse_scene(lines)))
-	{
-		try_set_err(PARSER_PARSE_FAIL);
-	}
-	free_strs(lines, 0);
-	return (scene);
-}
+#endif

@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   scene_ptr_arr.h                                    :+:      :+:    :+:   */
+/*   scene_ptr_arr_size.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/15 21:26:37 by amelihov          #+#    #+#             */
-/*   Updated: 2018/07/05 14:47:56 by amelihov         ###   ########.fr       */
+/*   Created: 2018/07/05 14:27:15 by amelihov          #+#    #+#             */
+/*   Updated: 2018/07/05 14:28:20 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCENE_PTR_ARR_H
-# define SCENE_PTR_ARR_H
+#include "scene_ptr_arr.h"
 
-typedef struct s_scene	t_scene;
+int		scene_ptr_arr_size(t_scene **scenes)
+{
+	int		i;
 
-void					scene_ptr_arr_delete(t_scene **scenes);
-int						scene_ptr_arr_size(t_scene **scenes);
-t_scene					**get_scenes_from_file(const char *file_name);
-
-#endif
+	if (!scenes)
+		return (-1);
+	i = 0;
+	while (scenes[i])
+		i++;
+	return (i);
+}

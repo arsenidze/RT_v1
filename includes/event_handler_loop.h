@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   scene_ptr_arr.h                                    :+:      :+:    :+:   */
+/*   event_handler_loop.h                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/15 21:26:37 by amelihov          #+#    #+#             */
-/*   Updated: 2018/07/05 14:47:56 by amelihov         ###   ########.fr       */
+/*   Created: 2018/07/05 14:49:21 by amelihov          #+#    #+#             */
+/*   Updated: 2018/07/05 14:50:09 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCENE_PTR_ARR_H
-# define SCENE_PTR_ARR_H
+#ifndef EVENT_HANDLER_LOOP
+# define EVENT_HANDLER_LOOP
 
-typedef struct s_scene	t_scene;
+#include "drawer.h"
+#include "scene.h"
 
-void					scene_ptr_arr_delete(t_scene **scenes);
-int						scene_ptr_arr_size(t_scene **scenes);
-t_scene					**get_scenes_from_file(const char *file_name);
+void	event_handler_loop(t_drawer *drawer, t_scene **scenes);
 
 #endif

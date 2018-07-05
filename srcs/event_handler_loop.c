@@ -1,8 +1,6 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   event_handler_loop.c                               :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
+/*                                                        :::      ::::::::   */ /*   event_handler_loop.c                               :+:      :+:    :+:   */ /*                                                    +:+ +:+         +:+     */
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/04 17:11:55 by amelihov          #+#    #+#             */
@@ -12,15 +10,62 @@
 
 #include "drawer.h"
 #include "scene.h"
-#include "sphere.h"
+#include "scene_ptr_arr.h"
 #include "userinput.h"
 #include "vect3d.h"
 #include "libft.h"
 void	render_scene(t_pixel *pixels, t_scene *scene, t_userinput *userinput);
+int		clampi(int x, int a, int b);
+void	move_current_object(t_scene **scene, t_userinput *userinput,
+		t_vect3d step);
 
-#define NEED_REDRAW 1
-#define DELTA_CAMEARA_STEP 20
-#define DELTA_CAMERA_ANGEL (M_PI / 180.0) * 10.0
+#define NEED_REDRAW			1
+#define DELTA_CAM_STEP		20
+#define DELTA_CAM_ANGEL		(M_PI / 180.0) * 10.0
+#define MAX_STEP_IN_PIXELS	10
+
+short	camera_active_keys(int key_code, t_userinput *ui, t_scene **scenes)
+{
+	if (key_code == SDL_SCANCODE_SPACE)
+		camera_move(scenes[ui->scene_index]->camera, DELTA_CAM_STEP);
+	else if (key_code == SDL_SCANCODE_RSHIFT)
+		camera_move(scenes[ui->scene_index]->camera, -DELTA_CAM_STEP);
+	else if (key_code == SDL_SCANCODE_KP_8)
+		camera_rotateOY(scenes[ui->scene_index]->camera, DELTA_CAM_ANGEL);
+	else if (key_code == SDL_SCANCODE_KP_5)
+		camera_rotateOY(scenes[ui->scene_index]->camera,-DELTA_CAM_ANGEL);
+	else if (key_code == SDL_SCANCODE_KP_4)
+		camera_rotateOZ(scenes[ui->scene_index]->camera, DELTA_CAM_ANGEL);
+	else if (key_code == SDL_SCANCODE_KP_6)
+		camera_rotateOZ(scenes[ui->scene_index]->camera, -DELTA_CAM_ANGEL);
+	else if (key_code == SDL_SCANCODE_KP_7)
+		camera_rotateOX(scenes[ui->scene_index]->camera, DELTA_CAM_ANGEL);
+	else if (key_code == SDL_SCANCODE_KP_9)
+		camera_rotateOX(scenes[ui->scene_index]->camera, -DELTA_CAM_ANGEL);
+	else
+		return (!NEED_REDRAW);
+	return (NEED_REDRAW);
+}
+
+short	object_active_keys(int key_code, t_userinput *userinput,
+		t_scene **scenes)
+{
+	if (key_code == SDL_SCANCODE_Q)
+		move_current_object(scenes, userinput, VECT3D(DELTA_CAM_STEP, 0, 0));
+	else if (key_code == SDL_SCANCODE_A)
+		move_current_object(scenes, userinput, VECT3D(-DELTA_CAM_STEP, 0, 0));
+	else if (key_code == SDL_SCANCODE_W)
+		move_current_object(scenes, userinput, VECT3D(0, DELTA_CAM_STEP, 0));
+	else if (key_code == SDL_SCANCODE_S)
+		move_current_object(scenes, userinput, VECT3D(0, -DELTA_CAM_STEP, 0));
+	else if (key_code == SDL_SCANCODE_E)
+		move_current_object(scenes, userinput, VECT3D(0, 0, DELTA_CAM_STEP));
+	else if (key_code == SDL_SCANCODE_D)
+		move_current_object(scenes, userinput, VECT3D(0, 0, -DELTA_CAM_STEP));
+	else
+		return (!NEED_REDRAW);
+	return (NEED_REDRAW);
+}
 
 short	handle_key_down(int key_code, t_userinput *userinput, t_scene **scenes)
 {
@@ -29,70 +74,22 @@ short	handle_key_down(int key_code, t_userinput *userinput, t_scene **scenes)
 		userinput->quit = 1;
 		return (!NEED_REDRAW);
 	}
-	else if (key_code == SDL_SCANCODE_1)
-		userinput->scene_index = 0;
-	else if (key_code == SDL_SCANCODE_2)
-		userinput->scene_index = 1;
-	else if (key_code == SDL_SCANCODE_3)
-		userinput->scene_index = 2;
-	else if (key_code == SDL_SCANCODE_4)
-		userinput->scene_index = 3;
-	else if (key_code == SDL_SCANCODE_SPACE)
-		scenes[userinput->scene_index]->camera->pos
-			+= VECT3D_MULL_ON_SCALAR(
-					scenes[userinput->scene_index]->camera->dir,
-					DELTA_CAMEARA_STEP);
-	else if (key_code == SDL_SCANCODE_RSHIFT)
-		scenes[userinput->scene_index]->camera->pos
-			+= VECT3D_MULL_ON_SCALAR(
-					scenes[userinput->scene_index]->camera->dir,
-					-DELTA_CAMEARA_STEP);
-	else if (key_code == SDL_SCANCODE_KP_8)
-		camera_rotateOY(scenes[userinput->scene_index]->camera,
-				DELTA_CAMERA_ANGEL);
-	else if (key_code == SDL_SCANCODE_KP_5)
-		camera_rotateOY(scenes[userinput->scene_index]->camera,
-				-DELTA_CAMERA_ANGEL);
-	else if (key_code == SDL_SCANCODE_KP_4)
-		camera_rotateOZ(scenes[userinput->scene_index]->camera,
-				DELTA_CAMERA_ANGEL);
-	else if (key_code == SDL_SCANCODE_KP_6)
-		camera_rotateOZ(scenes[userinput->scene_index]->camera,
-				-DELTA_CAMERA_ANGEL);
-	else if (key_code == SDL_SCANCODE_KP_9)
-		camera_rotateOX(scenes[userinput->scene_index]->camera,
-				DELTA_CAMERA_ANGEL);
-	else if (key_code == SDL_SCANCODE_KP_7)
-		camera_rotateOX(scenes[userinput->scene_index]->camera,
-				-DELTA_CAMERA_ANGEL);
-	else if (key_code == SDL_SCANCODE_Q)
-		((t_sphere*)(scenes[userinput->scene_index]
-			->objects[userinput->object_index]->primitive))->pos[X]
-			+= DELTA_CAMEARA_STEP;
-	else if (key_code == SDL_SCANCODE_A)
-		((t_sphere*)(scenes[userinput->scene_index]
-			->objects[userinput->object_index]->primitive))->pos[X]
-			+= -DELTA_CAMEARA_STEP;
-	else if (key_code == SDL_SCANCODE_W)
-		((t_sphere*)(scenes[userinput->scene_index]
-			->objects[userinput->object_index]->primitive))->pos[Y]
-			+= DELTA_CAMEARA_STEP;
-	else if (key_code == SDL_SCANCODE_S)
-		((t_sphere*)(scenes[userinput->scene_index]
-			->objects[userinput->object_index]->primitive))->pos[Y]
-			+= -DELTA_CAMEARA_STEP;
-	else if (key_code == SDL_SCANCODE_E)
-		((t_sphere*)(scenes[userinput->scene_index]
-			->objects[userinput->object_index]->primitive))->pos[Z]
-			+= DELTA_CAMEARA_STEP;
-	else if (key_code == SDL_SCANCODE_D)
-		((t_sphere*)(scenes[userinput->scene_index]
-			->objects[userinput->object_index]->primitive))->pos[Z]
-			+= -DELTA_CAMEARA_STEP;
+	if (key_code == SDL_SCANCODE_KP_MULTIPLY)
+		userinput->scene_index= clampi(++userinput->scene_index, 0,
+			userinput->nscenes);
+	if (key_code == SDL_SCANCODE_KP_PLUSMINUS)
+		userinput->scene_index = clampi(++userinput->scene_index, 0,
+			userinput->nscenes);
 	else if (key_code == SDL_SCANCODE_KP_PLUS)
-		userinput->step_in_pixels += 1;
+		userinput->step_in_pixels = clampi(++userinput->step_in_pixels, 1,
+			MAX_STEP_IN_PIXELS);
 	else if (key_code == SDL_SCANCODE_KP_MINUS)
-		userinput->step_in_pixels += -1;
+		userinput->step_in_pixels = clampi(--userinput->step_in_pixels, 1,
+			MAX_STEP_IN_PIXELS);
+	else if (camera_active_keys(key_code, userinput, scenes) == NEED_REDRAW)
+		;
+	else if (object_active_keys(key_code, userinput, scenes) == NEED_REDRAW)
+		;
 	else
 		return (!NEED_REDRAW);
 	return (NEED_REDRAW);
@@ -107,6 +104,7 @@ void	event_handler_loop(t_drawer *drawer, t_scene **scenes)
 
 	ft_memset(&userinput, 0, sizeof(t_userinput));
 	userinput.step_in_pixels = 1;
+	userinput.nscenes = scene_ptr_arr_size(scenes);
 	render_scene(drawer->pixels, scenes[userinput.scene_index], &userinput);
 	drawer_render(drawer);
 	while (!userinput.quit)

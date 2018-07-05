@@ -6,7 +6,7 @@
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 09:44:22 by amelihov          #+#    #+#             */
-/*   Updated: 2018/07/04 18:42:09 by amelihov         ###   ########.fr       */
+/*   Updated: 2018/07/05 13:49:00 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@ void			camera_delete(t_camera *camera);
 void			camera_rotateOX(t_camera *camera, double angel);
 void			camera_rotateOY(t_camera *camera, double angel);
 void			camera_rotateOZ(t_camera *camera, double angel);
+void			camera_move(t_camera *camera, double step);
 
 #endif
