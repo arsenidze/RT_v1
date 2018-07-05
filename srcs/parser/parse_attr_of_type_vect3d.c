@@ -6,7 +6,7 @@
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/15 15:45:52 by amelihov          #+#    #+#             */
-/*   Updated: 2018/06/15 22:50:15 by amelihov         ###   ########.fr       */
+/*   Updated: 2018/07/05 23:00:11 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,5 @@ short	parse_attr_of_type_vect3d(char *line, int *line_index,
 		return (PARSER_FAILURE);
 	if (!is_only_whitespaces(&value[nchars], RIGHT_BRACKET))
 		return (PARSER_FAILURE);
-	return (PARSER_SUCCESS);	
+	return (PARSER_SUCCESS);
 }

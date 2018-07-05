@@ -6,7 +6,7 @@
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/05 20:35:45 by amelihov          #+#    #+#             */
-/*   Updated: 2018/07/05 20:37:25 by amelihov         ###   ########.fr       */
+/*   Updated: 2018/07/05 21:03:32 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,5 @@ t_vect3d	vect3d_cross(t_vect3d v1, t_vect3d v2)
 {
 	return (vect3d(v1[Y] * v2[Z] - v1[Z] * v2[Y],
 					v1[Z] * v2[X] - v1[X] * v2[Z],
-					v1[X] * v2[Y] - v1[Y] * v2[X]);
+					v1[X] * v2[Y] - v1[Y] * v2[X]));
 }

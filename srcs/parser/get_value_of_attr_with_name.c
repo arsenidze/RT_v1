@@ -6,14 +6,14 @@
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/15 15:52:58 by amelihov          #+#    #+#             */
-/*   Updated: 2018/06/15 22:38:44 by amelihov         ###   ########.fr       */
+/*   Updated: 2018/07/05 22:50:05 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser_private.h"
 #include "libft.h"
 
-char 	*get_value_of_attr_with_name(char *line, int *line_index,
+char	*get_value_of_attr_with_name(char *line, int *line_index,
 		char *attr_name)
 {
 	int	i;

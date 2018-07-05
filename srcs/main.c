@@ -6,7 +6,7 @@
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 12:44:34 by amelihov          #+#    #+#             */
-/*   Updated: 2018/07/05 15:19:19 by amelihov         ###   ########.fr       */
+/*   Updated: 2018/07/05 22:48:51 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	print_usage(void)
 	return (1);
 }
 
-int 	main(int argc, char *argv[])
+int			main(int argc, char *argv[])
 {
 	t_drawer		*drawer;
 	t_scene			**scenes;

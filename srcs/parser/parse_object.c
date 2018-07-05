@@ -6,7 +6,7 @@
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/13 12:58:34 by amelihov          #+#    #+#             */
-/*   Updated: 2018/07/05 17:08:32 by amelihov         ###   ########.fr       */
+/*   Updated: 2018/07/05 23:06:06 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ static t_object	*parse_object_failure(char *err)
 	return (NULL);
 }
 
-static t_object	*(*match_primitive_parser(char *value))
-					(char *line, t_vect3d components[3])
+static t_object	*(*match_primitive_parser(char *value))(char *line,
+					t_vect3d components[3])
 {
 	if (ft_strnequ(value, SPHERE_ID, ID_LEN(SPHERE_ID)))
 		return (&parse_sphere);
@@ -35,7 +35,7 @@ static t_object	*(*match_primitive_parser(char *value))
 	return (NULL);
 }
 
-t_object			*parse_object(char *line)
+t_object		*parse_object(char *line)
 {
 	int			i;
 	t_vect3d	components[3];

@@ -6,7 +6,7 @@
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/13 12:58:25 by amelihov          #+#    #+#             */
-/*   Updated: 2018/06/15 21:17:09 by amelihov         ###   ########.fr       */
+/*   Updated: 2018/07/05 23:07:19 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static t_object	**parse_objects_failure(t_object **objects, char *err)
 	return (NULL);
 }
 
-t_object			**parse_objects(char **lines, int nobjects_nexpected)
+t_object		**parse_objects(char **lines, int nobjects_nexpected)
 {
 	t_object	**objects;
 	int			nlines;

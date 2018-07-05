@@ -42,6 +42,6 @@ t_camera		*parse_camera(char *line)
 		return (parse_camera_failure(PARSER_CAMERA_UP_FAIL));
 	if (!is_correct_eol(&line[i]))
 		return (parse_camera_failure(PARSER_CAMERA_EOL_FAIL));
-	return (camera_new(components[0], VECT3D_NORM(components[1]),
-		VECT3D_NORM(components[2])));
+	return (camera_new(components[0], vect3d_norm(components[1]),
+		vect3d_norm(components[2])));
 }

@@ -1,18 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vect3d_dot.c                                       :+:      :+:    :+:   */
+/*   apply_light.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/05 20:34:21 by amelihov          #+#    #+#             */
-/*   Updated: 2018/07/05 20:35:18 by amelihov         ###   ########.fr       */
+/*   Created: 2018/07/05 23:15:22 by amelihov          #+#    #+#             */
+/*   Updated: 2018/07/05 23:16:01 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vect3d.h"
+#ifndef APPLY_LIGHT_H
+# define APPLY_LIGHT_H
 
-t_vect3d	vect3d_dot(t_vect3d v1, t_vect3d v2)
-{
-	return (v1[X] * v2[X] + v1[Y] * v2[Y] + v1[Z] * v2[Z]);
-}
+#include "scene.h"
+#include "color.h"
+#include "intersection.h"
+
+t_color	apply_light(t_scene *, t_intersection *);
+
+#endif

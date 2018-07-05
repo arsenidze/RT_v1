@@ -6,60 +6,61 @@
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/04 18:36:21 by amelihov          #+#    #+#             */
-/*   Updated: 2018/07/04 18:41:07 by amelihov         ###   ########.fr       */
+/*   Updated: 2018/07/05 23:21:34 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vect3d.h"
+#include <math.h>
 
-void		vect3d_fill_rotateOX_matrix(t_vect3d m[3], double angel)
+void		vect3d_fill_rotate_ox_matrix(t_vect3d m[3], double angel)
 {
-	double	cosA;
-	double	sinA;
+	double	cos_a;
+	double	sin_a;
 
-	cosA = cos(angel);
-	sinA = sin(angel);
+	cos_a = cos(angel);
+	sin_a = sin(angel);
 	m[0][0] = 1;
 	m[0][1] = 0;
 	m[0][2] = 0;
 	m[1][0] = 0;
-	m[1][1] = cosA;
-	m[1][2] = -sinA;
+	m[1][1] = cos_a;
+	m[1][2] = -sin_a;
 	m[2][0] = 0;
-	m[2][1] = sinA;
-	m[2][2] = cosA;
+	m[2][1] = sin_a;
+	m[2][2] = cos_a;
 }
 
-void		vect3d_fill_rotateOY_matrix(t_vect3d m[3], double angel)
+void		vect3d_fill_rotate_oy_matrix(t_vect3d m[3], double angel)
 {
-	double	cosA;
-	double	sinA;
+	double	cos_a;
+	double	sin_a;
 
-	cosA = cos(angel);
-	sinA = sin(angel);
-	m[0][0] = cosA;
+	cos_a = cos(angel);
+	sin_a = sin(angel);
+	m[0][0] = cos_a;
 	m[0][1] = 0;
-	m[0][2] = sinA;
+	m[0][2] = sin_a;
 	m[1][0] = 0;
 	m[1][1] = 1;
 	m[1][2] = 0;
-	m[2][0] = -sinA;
+	m[2][0] = -sin_a;
 	m[2][1] = 0;
-	m[2][2] = cosA;
+	m[2][2] = cos_a;
 }
 
-void		vect3d_fill_rotateOZ_matrix(t_vect3d m[3], double angel)
+void		vect3d_fill_rotate_oz_matrix(t_vect3d m[3], double angel)
 {
-	double	cosA;
-	double	sinA;
+	double	cos_a;
+	double	sin_a;
 
-	cosA = cos(angel);
-	sinA = sin(angel);
-	m[0][0] = cosA;
-	m[0][1] = -sinA;
+	cos_a = cos(angel);
+	sin_a = sin(angel);
+	m[0][0] = cos_a;
+	m[0][1] = -sin_a;
 	m[0][2] = 0;
-	m[1][0] = sinA;
-	m[1][1] = cosA;
+	m[1][0] = sin_a;
+	m[1][1] = cos_a;
 	m[1][2] = 0;
 	m[2][0] = 0;
 	m[2][1] = 0;

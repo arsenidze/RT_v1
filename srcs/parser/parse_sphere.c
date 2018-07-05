@@ -6,7 +6,7 @@
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/13 16:19:50 by amelihov          #+#    #+#             */
-/*   Updated: 2018/07/05 17:19:47 by amelihov         ###   ########.fr       */
+/*   Updated: 2018/07/05 23:08:07 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static t_object	*parse_sphere_failure(char *err)
 	return (NULL);
 }
 
-t_object			*parse_sphere(char *line, t_vect3d components[3])
+t_object		*parse_sphere(char *line, t_vect3d components[3])
 {
 	int			i;
 	t_vect3d	pos;

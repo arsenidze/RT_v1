@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vect3d_clamp.c                                     :+:      :+:    :+:   */
+/*   vect3d_sq_len.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/05 20:39:27 by amelihov          #+#    #+#             */
-/*   Updated: 2018/07/05 20:41:00 by amelihov         ###   ########.fr       */
+/*   Created: 2018/07/05 20:33:08 by amelihov          #+#    #+#             */
+/*   Updated: 2018/07/05 21:17:42 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vect3d.h"
-#include "mmath.h"
 
-t_vect3d	vect3d_clamp(t_vect3d v, double a, double b)
+double		vect3d_sq_len(t_vect3d v)
 {
-	return (vect3d(clampd(v[X], a, b),
-				clampd(v[Y], a, b),
-				clampd(v[Z], a, b));
+	return (v[X] * v[X] + v[Y] * v[Y] + v[Z] * v[Z]);
 }

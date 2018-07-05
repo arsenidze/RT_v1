@@ -6,7 +6,7 @@
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/04 17:11:30 by amelihov          #+#    #+#             */
-/*   Updated: 2018/07/05 14:43:38 by amelihov         ###   ########.fr       */
+/*   Updated: 2018/07/05 23:19:11 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 #include <stdlib.h>
 #include <string.h>
 #include <errno.h>
-#include "libft.h" 
-#include "parser.h" 
+#include "libft.h"
+#include "parser.h"
 
-t_scene *get_scene_from_file(const char *file_name)
+static t_scene	*get_scene_from_file(const char *file_name)
 {
 	t_scene	*scene;
-	char 	**lines;
+	char	**lines;
 
 	if (!(lines = read_file(file_name)))
 	{
@@ -36,7 +36,7 @@ t_scene *get_scene_from_file(const char *file_name)
 	return (scene);
 }
 
-static void				*get_scenes_from_file_failure(t_scene **scenes,
+static void		*get_scenes_from_file_failure(t_scene **scenes,
 						char *err)
 {
 	scene_ptr_arr_delete(scenes);
@@ -44,7 +44,7 @@ static void				*get_scenes_from_file_failure(t_scene **scenes,
 	return (NULL);
 }
 
-t_scene					**get_scenes_from_file(const char *file_name)
+t_scene			**get_scenes_from_file(const char *file_name)
 {
 	t_scene	**scenes;
 

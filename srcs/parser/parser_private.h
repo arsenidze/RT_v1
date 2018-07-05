@@ -6,68 +6,68 @@
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/10 11:31:07 by amelihov          #+#    #+#             */
-/*   Updated: 2018/07/05 18:49:34 by amelihov         ###   ########.fr       */
+/*   Updated: 2018/07/05 23:04:54 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRIVATE_PRIVATE_H
-# define PRIVATE_PRIVATE_H
+#ifndef PARSER_PRIVATE_H
+# define PARSER_PRIVATE_H
 
-#include "parser.h"
-#include "camera.h"
-#include "object.h"
-#include "light.h"
-#include "vect3d.h"
+# include "parser.h"
+# include "camera.h"
+# include "object.h"
+# include "light.h"
+# include "vect3d.h"
 
-#define PARSER_SUCCESS	1
-#define PARSER_FAILURE	!PARSER_SUCCESS
+# define PARSER_SUCCESS	1
+# define PARSER_FAILURE	!PARSER_SUCCESS
 
 /*
 **	Length of identifiers
 */
-#define ID_LEN(ID)	(sizeof(ID) - 1)
+# define ID_LEN(ID)	(sizeof(ID) - 1)
 
 /*
 **	Attribute identifiers
 */
-#define AMBNT		"ambient"
-#define DIFF		"diffuse"
-#define SPEC		"specular"
-#define POS			"pos"
-#define RADIUS		"radius"
-#define AXIS		"axis"
-#define DIRECTION	"dir"
-#define UP			"up"
-#define NORMAL		"normal"
-#define PRIMIT		"primitive"
-#define SLOPE		"slope"
-#define SPHERE_ID	"sphere"
-#define CYLINDER_ID	"cylinder"
-#define CONE_ID		"cone"
-#define PLANE_ID	"plane"
+# define AMBNT		"ambient"
+# define DIFF		"diffuse"
+# define SPEC		"specular"
+# define POS			"pos"
+# define RADIUS		"radius"
+# define AXIS		"axis"
+# define DIRECTION	"dir"
+# define UP			"up"
+# define NORMAL		"normal"
+# define PRIMIT		"primitive"
+# define SLOPE		"slope"
+# define SPHERE_ID	"sphere"
+# define CYLINDER_ID	"cylinder"
+# define CONE_ID		"cone"
+# define PLANE_ID	"plane"
 
-#define LEFT_BRACKET	'['
-#define RIGHT_BRACKET	']'
-#define SEPARATOR		','
-#define EOL				';'
+# define LEFT_BRACKET	'['
+# define RIGHT_BRACKET	']'
+# define SEPARATOR		','
+# define EOL				';'
 
-#define IS_WHITESPACE(c) ((c) == ' ' || (c) == '\t')
-#define IS_DIGIT(c) ((c) >= '0' && (c) <= '9')
+# define IS_WHITESPACE(c) ((c) == ' ' || (c) == '\t')
+# define IS_DIGIT(c) ((c) >= '0' && (c) <= '9')
 
-#define MAX_NOBJECTS_NDIGITS	2
-#define MAX_NLIGHTS_NDIGITS		2
+# define MAX_NOBJECTS_NDIGITS	2
+# define MAX_NLIGHTS_NDIGITS		2
 
-#define MAX_DOUBLE				9999.9999
-#define MAX_INT					9999
+# define MAX_DOUBLE				9999.9999
+# define MAX_INT					9999
 
-#define MAX_NDIGITS_INT			4
-#define MAX_NDIGITS_FRACT		4
-#define MAX_NDIGITS_DOUBLE		(MAX_NDIGITS_INT + 1 + MAX_NDIGITS_FRACT)
+# define MAX_NDIGITS_INT			4
+# define MAX_NDIGITS_FRACT		4
+# define MAX_NDIGITS_DOUBLE		(MAX_NDIGITS_INT + 1 + MAX_NDIGITS_FRACT)
 
-#define MIN_POS					-10000
-#define MAX_POS					10000
-#define MAX_RADIUS				1000
-#define MAX_SLOPE				1
+# define MIN_POS					-10000
+# define MAX_POS					10000
+# define MAX_RADIUS				1000
+# define MAX_SLOPE				1
 
 t_camera	*parse_camera(char *line);
 t_object	**parse_objects(char **lines, int nobjects_expected);

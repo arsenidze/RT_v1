@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move_current_object.c                              :+:      :+:    :+:   */
+/*   vect3d_clamp.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/05 13:56:26 by amelihov          #+#    #+#             */
-/*   Updated: 2018/07/05 17:46:54 by amelihov         ###   ########.fr       */
+/*   Created: 2018/07/05 20:39:27 by amelihov          #+#    #+#             */
+/*   Updated: 2018/07/05 21:02:57 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "scene.h"
-#include "userinput.h"
 #include "vect3d.h"
-#include "sphere.h"
+#include "mmath.h"
 
-void	move_current_object(t_scene **scenes, t_userinput *userinput,
-		t_vect3d step)
+t_vect3d	vect3d_clamp(t_vect3d v, double a, double b)
 {
-	((t_sphere*)(scenes[userinput->scene_index]
-		->objects[userinput->object_index]
-		->primitive))->pos += step;
+	return (vect3d(clampd(v[X], a, b),
+				clampd(v[Y], a, b),
+				clampd(v[Z], a, b)));
 }

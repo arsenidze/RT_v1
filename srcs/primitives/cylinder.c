@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cylinder.c                                           :+:      :+:    :+:   */
+/*   cylinder.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/19 10:52:52 by amelihov          #+#    #+#             */
-/*   Updated: 2018/05/14 22:14:28 by amelihov         ###   ########.fr       */
+/*   Created: 2018/07/05 23:13:00 by amelihov          #+#    #+#             */
+/*   Updated: 2018/07/05 23:13:02 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cylinder.h"
+#include "mmath.h"
 #include <stdlib.h>
-double			get_positive_root(double c[3]);
-double			square(double x);
 
 #define EPS 0.001
 
@@ -29,18 +28,18 @@ short		cylinder_intersection(void *v_cylinder, t_vect3d start,
 	cylinder = (t_cylinder *)v_cylinder;
 	x = start - cylinder->pos;
 	v = cylinder->axis;
-	coefficients[0] = VECT3D_DOT(ray_dir, ray_dir)
-					- square(VECT3D_DOT(ray_dir, v));
-	coefficients[1] = VECT3D_DOT(ray_dir, x)
-					- VECT3D_DOT(ray_dir, v) * VECT3D_DOT(x, v);
-	coefficients[2] = VECT3D_DOT(x, x)
-					- square(VECT3D_DOT(x, v))
+	coefficients[0] = vect3d_dot(ray_dir, ray_dir)
+					- square(vect3d_dot(ray_dir, v));
+	coefficients[1] = vect3d_dot(ray_dir, x)
+					- vect3d_dot(ray_dir, v) * vect3d_dot(x, v);
+	coefficients[2] = vect3d_dot(x, x)
+					- square(vect3d_dot(x, v))
 					- (cylinder->radius * cylinder->radius);
 	t = get_positive_root(coefficients);
 	if (t < 0)
 		return (0);
 	if (intersect_point)
-		*intersect_point = start + VECT3D_MULT_ON_SCALAR(ray_dir, t - EPS);
+		*intersect_point = start + vect3d_mult_on_scalar(ray_dir, t - EPS);
 	return (1);
 }
 
@@ -60,10 +59,9 @@ t_vect3d	cylinder_get_normal(void *v_cylinder, t_vect3d point)
 	cylinder = (t_cylinder *)v_cylinder;
 	v = cylinder->axis;
 	c = cylinder->pos;
-	m = (VECT3D_DOT(v, point) - VECT3D_DOT(v, c)) / VECT3D_DOT(v, v);
-	normal = point - (c + VECT3D_MULT_ON_SCALAR(v, m));
-	normal = VECT3D_NORM(normal);
-	//ychitivat' vnytur' ili iznutri
+	m = (vect3d_dot(v, point) - vect3d_dot(v, c)) / vect3d_dot(v, v);
+	normal = point - (c + vect3d_mult_on_scalar(v, m));
+	normal = vect3d_norm(normal);
 	return (normal);
 }
 

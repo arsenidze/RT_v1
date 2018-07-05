@@ -6,7 +6,7 @@
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 12:27:42 by amelihov          #+#    #+#             */
-/*   Updated: 2018/07/04 11:54:07 by amelihov         ###   ########.fr       */
+/*   Updated: 2018/07/05 22:17:24 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ int			err_print(char *prefix)
 {
 	char	*err;
 	int		i;
-
 
 	if (prefix)
 	{

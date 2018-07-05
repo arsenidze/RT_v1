@@ -6,7 +6,7 @@
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 16:50:50 by amelihov          #+#    #+#             */
-/*   Updated: 2018/06/15 17:29:52 by amelihov         ###   ########.fr       */
+/*   Updated: 2018/07/05 22:13:43 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ t_drawer		*drawer_new(void)
 		SDL_RENDERER_ACCELERATED)))
 		return (drawer_err_exit(drawer, DRAWER_NEW_SDL_CREATE_RENDERER));
 	if (!(drawer->texture = SDL_CreateTexture(drawer->renderer,
-		SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_TARGET, TEX_W, TEX_H))) 
+		SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_TARGET, TEX_W, TEX_H)))
 		return (drawer_err_exit(drawer, DRAWER_NEW_SDL_CREATE_TEXTURE));
 	SDL_SetRenderDrawColor(drawer->renderer, 0, 0, 0, 255);
 	if (!(drawer->pixels = malloc(sizeof(t_pixel) * TEX_W * TEX_H)))

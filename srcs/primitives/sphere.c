@@ -6,13 +6,13 @@
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 10:52:52 by amelihov          #+#    #+#             */
-/*   Updated: 2018/07/05 18:57:23 by amelihov         ###   ########.fr       */
+/*   Updated: 2018/07/05 23:11:07 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sphere.h"
+#include "mmath.h"
 #include <stdlib.h>
-double			get_positive_root(double c[3]);
 
 #define EPS 0.001
 
@@ -24,18 +24,18 @@ short		sphere_intersection(void *v_sphere, t_vect3d start,
 	double		t;
 
 	sphere = (t_sphere *)v_sphere;
-	coefficients[0] = VECT3D_DOT(ray_dir, ray_dir);
-	coefficients[1] = VECT3D_DOT(start, ray_dir)
-						- VECT3D_DOT(sphere->pos, ray_dir); 
-	coefficients[2] = VECT3D_DOT(start, start)
-						- 2 * VECT3D_DOT(start, sphere->pos)
-						+ VECT3D_DOT(sphere->pos, sphere->pos)
+	coefficients[0] = vect3d_dot(ray_dir, ray_dir);
+	coefficients[1] = vect3d_dot(start, ray_dir)
+						- vect3d_dot(sphere->pos, ray_dir);
+	coefficients[2] = vect3d_dot(start, start)
+						- 2 * vect3d_dot(start, sphere->pos)
+						+ vect3d_dot(sphere->pos, sphere->pos)
 						- (sphere->radius * sphere->radius);
 	t = get_positive_root(coefficients);
 	if (t < 0)
 		return (0);
 	if (intersect_point)
-		*intersect_point = start + VECT3D_MULT_ON_SCALAR(ray_dir, t - EPS);
+		*intersect_point = start + vect3d_mult_on_scalar(ray_dir, t - EPS);
 	return (1);
 }
 
@@ -51,7 +51,7 @@ t_vect3d	sphere_get_normal(void *v_sphere, t_vect3d point)
 
 	sphere = (t_sphere *)v_sphere;
 	normal = point - sphere->pos;
-	normal = VECT3D_NORM(normal);
+	normal = vect3d_norm(normal);
 	return (normal);
 }
 

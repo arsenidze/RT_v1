@@ -37,6 +37,6 @@ t_camera		*camera_new(t_vect3d pos, t_vect3d dir, t_vect3d up)
 	camera->pos = pos;
 	camera->dir = dir;
 	camera->up = up;
-	camera->left = VECT3D_CROSS(dir, up);
+	camera->left = vect3d_cross(dir, up);
 	return (camera);
 }

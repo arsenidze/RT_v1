@@ -15,5 +15,5 @@
 
 void	camera_move(t_camera *camera, double step)
 {
-	camera->pos += VECT3D_MULT_ON_SCALAR(camera->dir, step);
+	camera->pos += vect3d_mult_on_scalar(camera->dir, step);
 }

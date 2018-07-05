@@ -6,7 +6,7 @@
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/15 16:14:24 by amelihov          #+#    #+#             */
-/*   Updated: 2018/07/05 17:18:50 by amelihov         ###   ########.fr       */
+/*   Updated: 2018/07/05 22:59:44 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,11 @@ short	parse_double(char *value, double *res, int *nchars_occupied)
 	if (ndigits_int_part == 0 || ndigits_int_part > MAX_NDIGITS_INT
 		|| int_part > MAX_INT || int_part < -MAX_INT)
 		return (PARSER_FAILURE);
-	i += ndigits_int_part;
-	*nchars_occupied = i;
+	*nchars_occupied = (i += ndigits_int_part);
 	*res = int_part;
 	if (value[i] != '.')
 		return (PARSER_SUCCESS);
-	i += 1;
-	fract_part = str_with_digits_to_int(&value[i], &ndigits_fract_part);
+	fract_part = str_with_digits_to_int(&value[++i], &ndigits_fract_part);
 	*nchars_occupied = i + ndigits_fract_part;
 	if (ndigits_fract_part == 0)
 		return (PARSER_SUCCESS);

@@ -6,7 +6,7 @@
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 22:13:55 by amelihov          #+#    #+#             */
-/*   Updated: 2018/06/01 17:07:42 by amelihov         ###   ########.fr       */
+/*   Updated: 2018/07/05 22:47:35 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 #include "plane.h"
 #include <stdlib.h>
 
-#define FOURTH_SCENE_NOBJECTS	0
-#define FOURTH_SCENE_NLIGHTS	0
+#define FOURTH_SCENE_NOBJECTS	1
+#define FOURTH_SCENE_NLIGHTS	1
 
 #define INVER_SQRT_TWO	0.70710678118
 
@@ -36,15 +36,11 @@ t_scene	*get_scene4(void)
 		return (NULL);
 	lights[FOURTH_SCENE_NLIGHTS] = NULL;
 	camera = camera_new(CAMERA_NEW_POS, CAMERA_NEW_DIR, CAMERA_NEW_UP);
-//	objects[0] = object_new(COLOR(0x00003333),
-//		PRIMITIVE(sphere, VECT3D(0, 0, 0), 50));
-//	objects[1] = object_new(COLOR(0x00220022),
-//		PRIMITIVE(sphere, VECT3D(0, -200, 100), 50));
-//	objects[2] = object_new(COLOR(0x00333300),
-//		PRIMITIVE(plane, VECT3D(0, 0, -100),VECT3D(0, 0, 1)));
-
-//	lights[0] = light_new(VECT3D(0, 0, 100), 10);
-//	lights[1] = light_new(VECT3D(-20, -500, 300), 10);
+	objects[0] = object_new(
+	VECT3D_3(vect3d(0.1, 0., 0.2), vect3d(0.3, 0.3, 0.), vect3d(0.1, 0., 0.)),
+		PRIMITIVE(sphere, vect3d(0, 100, 0), 100));
+	lights[0] = light_new(vect3d(0, -20, 0), VECT3D_3(vect3d(1, 1, 1),
+		vect3d(1, 1, 1), vect3d(1, 1, 1)));
 	scene = scene_new(camera, objects, lights);
 	return (scene);
 }

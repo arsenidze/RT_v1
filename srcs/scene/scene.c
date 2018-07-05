@@ -6,7 +6,7 @@
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 17:55:45 by amelihov          #+#    #+#             */
-/*   Updated: 2018/07/04 11:24:44 by amelihov         ###   ########.fr       */
+/*   Updated: 2018/07/05 23:19:55 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 #include "libft.h"
 #include <stdlib.h>
 
-void	scene_delete(t_scene *scene)
+void			scene_delete(t_scene *scene)
 {
 	int		i;
 
 	(void)i;
-	if (!scene)	
+	if (!scene)
 		return ;
-	if (scene->camera) 
+	if (scene->camera)
 		camera_delete(scene->camera);
 	if (scene->objects)
 	{

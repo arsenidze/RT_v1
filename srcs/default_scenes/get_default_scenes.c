@@ -6,7 +6,7 @@
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/15 21:39:25 by amelihov          #+#    #+#             */
-/*   Updated: 2018/07/05 14:47:38 by amelihov         ###   ########.fr       */
+/*   Updated: 2018/07/05 21:31:27 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@ static void		*get_default_scenes_err_exit(t_scene **scenes, char *err)
 
 static t_scene	*get_scene(short i)
 {
-	static	t_scene *(*scenes_getters[NSCENES])(void) =
-	{
+	static t_scene	*(*scenes_getters[NSCENES])(void) = {
 		get_scene1,
 		get_scene2,
 		get_scene3,

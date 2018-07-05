@@ -22,9 +22,9 @@
 # define SCENE_FAILURE 1
 */
 
-#define CAMERA_NEW_POS	VECT3D(500, 0, 0)
-#define CAMERA_NEW_DIR	VECT3D(-1, 0, 0)
-#define CAMERA_NEW_UP	VECT3D(0, 0, 1)
+#define CAMERA_NEW_POS	vect3d(500, 0, 0)
+#define CAMERA_NEW_DIR	vect3d(-1, 0, 0)
+#define CAMERA_NEW_UP	vect3d(0, 0, 1)
 
 typedef struct	s_scene
 {
