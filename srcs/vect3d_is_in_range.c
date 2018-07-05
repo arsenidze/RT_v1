@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_valid_slope.c                                   :+:      :+:    :+:   */
+/*   vect3d_is_in_range.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/15 16:48:30 by amelihov          #+#    #+#             */
-/*   Updated: 2018/06/15 16:48:52 by amelihov         ###   ########.fr       */
+/*   Created: 2018/07/05 17:03:26 by amelihov          #+#    #+#             */
+/*   Updated: 2018/07/05 17:04:51 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser_private.h"
+#include "vect3d.h"
 
-short	is_valid_slope(double slope)
+short		vect3d_is_in_range(t_vect3d v, double a, double b)
 {
-	(void)slope;
-	return (1);
+	return ((v[X] >= a && v[X] <= b)
+		&& (v[Y] >= a && v[Y] <= b)
+		&& (v[Z] >= a && v[Z] <= b));
 }

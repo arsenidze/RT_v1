@@ -33,9 +33,9 @@ static t_vect3d	get_ray_dir(t_camera *camera, int x, int y)
 	dir_factor = DIST_TO_PP;
 	up_factor = -(y - TEX_H / 2);
 	left_factor = (x - TEX_W / 2);
-	ray_dir = VECT3D_MULL_ON_SCALAR(camera->dir, dir_factor)
-			+ VECT3D_MULL_ON_SCALAR(camera->up, up_factor)
-			+ VECT3D_MULL_ON_SCALAR(camera->left, left_factor);
+	ray_dir = VECT3D_MULT_ON_SCALAR(camera->dir, dir_factor)
+			+ VECT3D_MULT_ON_SCALAR(camera->up, up_factor)
+			+ VECT3D_MULT_ON_SCALAR(camera->left, left_factor);
 	ray_dir = VECT3D_NORM(ray_dir);
 	return (ray_dir);
 }

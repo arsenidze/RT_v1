@@ -34,7 +34,7 @@ short		plane_intersection(void *v_plane, t_vect3d start,
 	if (t <= 0)
 		return (0);
 	if (intersect_point)
-		*intersect_point = start + VECT3D_MULL_ON_SCALAR(ray_dir, t - EPS);
+		*intersect_point = start + VECT3D_MULT_ON_SCALAR(ray_dir, t - EPS);
 	return (1);
 }
 

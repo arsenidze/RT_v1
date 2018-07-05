@@ -6,7 +6,7 @@
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/15 16:14:24 by amelihov          #+#    #+#             */
-/*   Updated: 2018/07/04 13:15:37 by amelihov         ###   ########.fr       */
+/*   Updated: 2018/07/05 17:18:50 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ short	parse_double(char *value, double *res, int *nchars_occupied)
 		i++;
 	int_part = str_with_digits_to_int(&value[i], &ndigits_int_part);
 	if (ndigits_int_part == 0 || ndigits_int_part > MAX_NDIGITS_INT
-		|| int_part > MAX_INT)
+		|| int_part > MAX_INT || int_part < -MAX_INT)
 		return (PARSER_FAILURE);
 	i += ndigits_int_part;
 	*nchars_occupied = i;

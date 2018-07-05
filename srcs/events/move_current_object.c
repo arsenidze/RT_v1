@@ -1,19 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_valid_radius.c                                  :+:      :+:    :+:   */
+/*   move_current_object.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/15 16:47:51 by amelihov          #+#    #+#             */
-/*   Updated: 2018/06/15 16:49:26 by amelihov         ###   ########.fr       */
+/*   Created: 2018/07/05 13:56:26 by amelihov          #+#    #+#             */
+/*   Updated: 2018/07/05 17:46:54 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser_private.h"
+#include "scene.h"
+#include "userinput.h"
+#include "vect3d.h"
+#include "sphere.h"
 
-short	is_valid_radius(double radius)
+void	move_current_object(t_scene **scenes, t_userinput *userinput,
+		t_vect3d step)
 {
-	(void)radius;
-	return (1);
+	((t_sphere*)(scenes[userinput->scene_index]
+		->objects[userinput->object_index]
+		->primitive))->pos += step;
 }

@@ -6,13 +6,14 @@
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/05 15:01:14 by amelihov          #+#    #+#             */
-/*   Updated: 2018/07/05 15:08:16 by amelihov         ###   ########.fr       */
+/*   Updated: 2018/07/05 17:56:09 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "drawer.h"
 #include "scene.h"
 #include "scene_ptr_arr.h"
+#include "object_ptr_arr.h"
 #include "userinput.h"
 #include "vect3d.h"
 #include "libft.h"
@@ -24,7 +25,7 @@ void	move_current_object(t_scene **scene, t_userinput *userinput,
 #define NEED_REDRAW			1
 #define DELTA_CAM_STEP		20
 #define DELTA_CAM_ANGEL		(M_PI / 180.0) * 10.0
-#define MAX_STEP_IN_PIXELS	10
+#define MAX_PIXELS			10
 
 short	camera_active_keys(int key_code, t_userinput *ui, t_scene **scenes)
 {
@@ -69,28 +70,38 @@ short	object_active_keys(int key_code, t_userinput *userinput,
 	return (NEED_REDRAW);
 }
 
-short	handle_key_down(int key_code, t_userinput *userinput, t_scene **scenes)
+short	handle_key_down(int key_code, t_userinput *ui, t_scene **scenes)
 {
 	if (key_code == SDL_SCANCODE_ESCAPE)
 	{
-		userinput->quit = 1;
+		ui->quit = 1;
 		return (!NEED_REDRAW);
 	}
 	else if (key_code == SDL_SCANCODE_KP_MULTIPLY)
-		userinput->scene_index = clampi(++userinput->scene_index, 0,
-			userinput->nscenes - 1);
+	{
+		ui->scene_index = clampi(++ui->scene_index, 0, ui->nscenes - 1);
+		ui->nobjects = object_ptr_arr_size(scenes[ui->scene_index]->objects);
+	}
 	else if (key_code == SDL_SCANCODE_KP_DIVIDE)
-		userinput->scene_index = clampi(--userinput->scene_index, 0,
-			userinput->nscenes - 1);
+	{
+		ui->scene_index = clampi(--ui->scene_index, 0, ui->nscenes - 1);
+		ui->nobjects = object_ptr_arr_size(scenes[ui->scene_index]->objects);
+	}
+	else if (key_code == SDL_SCANCODE_N)
+	{
+		ui->object_index = clampi(++ui->object_index, 0, ui->nobjects - 1);
+	}
+	else if (key_code == SDL_SCANCODE_P)
+	{
+		ui->object_index = clampi(--ui->object_index, 0, ui->nobjects - 1);
+	}
 	else if (key_code == SDL_SCANCODE_KP_PLUS)
-		userinput->step_in_pixels = clampi(++userinput->step_in_pixels, 1,
-			MAX_STEP_IN_PIXELS);
+		ui->step_in_pixels = clampi(++ui->step_in_pixels, 1, MAX_PIXELS);
 	else if (key_code == SDL_SCANCODE_KP_MINUS)
-		userinput->step_in_pixels = clampi(--userinput->step_in_pixels, 1,
-			MAX_STEP_IN_PIXELS);
-	else if (camera_active_keys(key_code, userinput, scenes) == NEED_REDRAW)
+		ui->step_in_pixels = clampi(--ui->step_in_pixels, 1, MAX_PIXELS);
+	else if (camera_active_keys(key_code, ui, scenes) == NEED_REDRAW)
 		;
-	else if (object_active_keys(key_code, userinput, scenes) == NEED_REDRAW)
+	else if (object_active_keys(key_code, ui, scenes) == NEED_REDRAW)
 		;
 	else
 		return (!NEED_REDRAW);
@@ -107,6 +118,7 @@ void	event_handler_loop(t_drawer *drawer, t_scene **scenes)
 	ft_memset(&userinput, 0, sizeof(t_userinput));
 	userinput.step_in_pixels = 1;
 	userinput.nscenes = scene_ptr_arr_size(scenes);
+	userinput.nobjects = object_ptr_arr_size(scenes[0]->objects);
 	render_scene(drawer->pixels, scenes[userinput.scene_index], &userinput);
 	drawer_render(drawer);
 	while (!userinput.quit)

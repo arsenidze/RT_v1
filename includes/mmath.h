@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   object_ptr_arr.h                                   :+:      :+:    :+:   */
+/*   mmath.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/15 21:11:01 by amelihov          #+#    #+#             */
-/*   Updated: 2018/07/05 17:42:45 by amelihov         ###   ########.fr       */
+/*   Created: 2018/07/05 19:09:18 by amelihov          #+#    #+#             */
+/*   Updated: 2018/07/05 19:11:26 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef OBJECT_PTR_ARR_H
-# define OBJECT_PTR_ARR_H
+#ifndef MMATH_H
+# define MMATH_H
 
-typedef struct s_object	t_object;
-
-void						object_ptr_arr_delete(t_object **objects);
-int							object_ptr_arr_size(t_object **objects);
+double	clampd(double x, double a, double b);
+int		clampi(int x, int a, int b);
+double	get_positive_root(double c[3]);
+double	square(double x);
 
 #endif

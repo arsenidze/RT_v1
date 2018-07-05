@@ -6,7 +6,7 @@
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/09 23:21:16 by amelihov          #+#    #+#             */
-/*   Updated: 2018/07/05 11:38:33 by amelihov         ###   ########.fr       */
+/*   Updated: 2018/07/05 19:19:14 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,6 @@
 short	find_closest_intersection(t_scene *, t_vect3d , t_vect3d, t_intersection *);
 double	clampd(double x, double a, double b);
 
-#define AMBIENT 	1.
-#define DIFFUSE 	2.
-#define SPECULAR	0.5
 
 #define SPECULAR_POW	200
 
@@ -28,15 +25,14 @@ static t_vect3d	get_diffuse_effect(t_light *light,
 {
 	double	cos_between_light_and_normal;
 
-	(void)light;
 	(void)sq_dist;
 	cos_between_light_and_normal = VECT3D_COS_NORMED(ray_to_light,
 			intersection->normal);
 	if (cos_between_light_and_normal > 0)
 	{
-		return (VECT3D_MULL_ON_SCALAR(intersection->hit_object->k[K_DIFFUSE]
+		return (VECT3D_MULT_ON_SCALAR(intersection->hit_object->k[K_DIFFUSE]
 				* light->components[L_DIFFUSE],
-				cos_between_light_and_normal));
+					cos_between_light_and_normal));
 	}
 	return (VECT3D(0, 0, 0));
 }
@@ -51,15 +47,14 @@ static t_vect3d	get_specular_effect(t_light *light,
 	bisector = ray_to_light + (-intersection->ray_dir);
 	bisector = VECT3D_NORM(bisector);
 
-	(void)light;
 	(void)sq_dist;
 	cos_between_bisector_and_normal = VECT3D_COS_NORMED(bisector,
 			intersection->normal);
 	if (cos_between_bisector_and_normal > 0)
 	{
-		return (VECT3D_MULL_ON_SCALAR(intersection->hit_object->k[K_SPECULAR]
+		return (VECT3D_MULT_ON_SCALAR(intersection->hit_object->k[K_SPECULAR]
 				* light->components[L_SPECULAR],
-				pow(cos_between_bisector_and_normal, 200)));
+					pow(cos_between_bisector_and_normal, SPECULAR_POW)));
 	}
 	return (VECT3D(0, 0, 0));
 }
@@ -72,7 +67,6 @@ t_color	apply_light(t_scene *scene, t_intersection *intersection)
 	double			sq_dist;
 	t_intersection	tmp_intersection;
 
-	(void)tmp_intersection;
 	total_light = VECT3D(0, 0, 0);
 	i = -1;
 	while (scene->lights[++i])

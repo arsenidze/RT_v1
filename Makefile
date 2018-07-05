@@ -6,28 +6,21 @@
 #    By: amelihov <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/29 13:43:11 by amelihov          #+#    #+#              #
-#    Updated: 2018/07/04 16:36:42 by amelihov         ###   ########.fr        #
+#    Updated: 2018/07/05 16:29:09 by amelihov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = RTv1
-PWD = $(shell pwd)
 
 CC     = gcc
 LD     = $(CC)
-DEPEND = makedepend
 
 SRC_DIR = srcs
 OBJ_DIR = obj
 INC_DIR = includes
 LIB_DIR = lib
-FRM_DIR = frm
 
-#SRC = $(foreach m, $(MODULES), $(wildcard $(m)/*.c))
-SRC = $(wildcard $(SRC_DIR)/*.c) $(wildcard $(SRC_DIR)/parser/*.c)
-_SRC = $(patsubst $(SRC_DIR)/%.c, %.c, $(SRC))
-#OBJ = $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRC))
-#OBJ = $(addprefix $(OBJ_DIR)/, $(_SRC))
+SRC = $(wildcard $(SRC_DIR)/*.c) $(wildcard $(SRC_DIR)/*/*.c)
 OBJ = $(addprefix $(OBJ_DIR)/, $(notdir $(SRC:.c=.o)))
 
 INC = $(INC_DIR)/*.h
@@ -40,12 +33,13 @@ SDL_INC =	-I ./lib/Frameworks/SDL2.framework/Headers/
 SDL_FLAGS = -F ./lib/Frameworks -framework SDL2
 
 CFLAGS = -Wall -Wextra -Werror -g
-#CFLAGS = -g
 HFLAGS = -I $(PWD)/$(INC_DIR) -I $(PWD)/$(LIBFT_INC) $(SDL_INC) 
 LFLAGS = $(LIBFT_FLAGS) $(SDL_FLAGS) 
-##
 
-#test:
+#testO:
+#	$(OBJ)
+#
+#testS:
 #	$(SRC)
 
 all:
@@ -76,13 +70,6 @@ fclean: clean
 	make fclean -C $(LIB_DIR)/libft/
 
 re: fclean all
-
-depend:
-	@echo "make depend"
-	@cd $(SRC_DIR); \
-	$(DEPEND) -Y -f ../Makefile -p $(OBJ_DIR)/ -- $(HFLAGS) -- $(_SRC); \
-	cd ..; \
-	rm Makefile.bak
 
 r: all
 	./$(NAME) scene1

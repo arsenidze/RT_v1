@@ -6,7 +6,7 @@
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/10 11:31:07 by amelihov          #+#    #+#             */
-/*   Updated: 2018/06/15 23:03:17 by amelihov         ###   ########.fr       */
+/*   Updated: 2018/07/05 18:49:34 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,11 @@
 #define MAX_NDIGITS_FRACT		4
 #define MAX_NDIGITS_DOUBLE		(MAX_NDIGITS_INT + 1 + MAX_NDIGITS_FRACT)
 
+#define MIN_POS					-10000
+#define MAX_POS					10000
+#define MAX_RADIUS				1000
+#define MAX_SLOPE				1
+
 t_camera	*parse_camera(char *line);
 t_object	**parse_objects(char **lines, int nobjects_expected);
 t_light		**parse_lights(char **lines, int nlights_expected);
@@ -78,7 +83,6 @@ short		parse_attr_of_type_vect3d(char *line, int *line_index,
 			char *attr_name, t_vect3d *res);
 short		parse_attr_of_type_double(char *line, int *line_index,
 			char *attr_name, double *res);
-//char		*get_err_at_line_msg(int line_num);
 char		*get_value_of_attr_with_name(char *line, int *line_index,
 			char *attr_name);
 short		parse_vect3d(char *value, t_vect3d *res, int *nchars_occupied);
@@ -87,8 +91,6 @@ short		parse_double(char *value, double *res, int *nchars_occupied);
 
 short		skip_separator(char *line, int *line_index);
 short		is_correct_eol(char *end_of_line);
-short		is_valid_radius(double radius);
-short		is_valid_slope(double slope);
 short		is_only_whitespaces(char *line, char terminate_char);
 int			str_with_digits_to_int(char *str, int *ndigits);
 
