@@ -6,18 +6,18 @@
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 16:32:41 by amelihov          #+#    #+#             */
-/*   Updated: 2018/07/04 15:46:57 by amelihov         ###   ########.fr       */
+/*   Updated: 2018/07/06 14:20:26 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DRAWER_H
 # define DRAWER_H
 
-# include "RTv1_defines.h"
+# include "rtv1_defines.h"
 # include "SDL.h"
 
 # define DRAWER_SUCCESS 0
-# define DRAWER_FAILURE 1 
+# define DRAWER_FAILURE 1
 
 # define TEX_W WIN_W
 # define TEX_H WIN_H
@@ -28,7 +28,7 @@ typedef Uint32	t_pixel;
 typedef struct	s_drawer
 {
 	SDL_Window		*window;
-	SDL_Renderer	*renderer;	
+	SDL_Renderer	*renderer;
 	SDL_Texture		*texture;
 	t_pixel			*pixels;
 	int				pitch;

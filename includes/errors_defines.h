@@ -1,11 +1,12 @@
-/* ************************************************************************** */ /*                                                                            */
+/* ************************************************************************** */
+/*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   errors_defines.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/19 08:59:41 by amelihov          #+#    #+#             */
-/*   Updated: 2018/06/15 21:35:33 by amelihov         ###   ########.fr       */
+/*   Created: 2018/07/06 14:12:52 by amelihov          #+#    #+#             */
+/*   Updated: 2018/07/06 14:13:26 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -13,10 +14,10 @@
 # define ERRORS_DEFINES_H
 
 # define DRAWER_NEW_MEM					"Not enough memory to init drawer"
-# define DRAWER_NEW_SDL_INIT			(char *)SDL_GetError() 
-# define DRAWER_NEW_SDL_CREATE_WINDOW 	(char *)SDL_GetError() 
-# define DRAWER_NEW_SDL_CREATE_RENDERER	(char *)SDL_GetError() 
-# define DRAWER_NEW_SDL_CREATE_TEXTURE 	(char *)SDL_GetError() 
+# define DRAWER_NEW_SDL_INIT			(char *)SDL_GetError()
+# define DRAWER_NEW_SDL_CREATE_WINDOW 	(char *)SDL_GetError()
+# define DRAWER_NEW_SDL_CREATE_RENDERER	(char *)SDL_GetError()
+# define DRAWER_NEW_SDL_CREATE_TEXTURE 	(char *)SDL_GetError()
 
 # define SCENE_NEW_MEM					"Not enough memory to init scene"
 
@@ -29,8 +30,8 @@
 # define PARSER_NOT_ENOUGH_LINES		"Not enough lines"
 # define PARSER_NLINES_FAIL				"Wrong number of lines"
 
-# define PARSER_NOBJECTS_FAIL			"Problem with number of lines for objects"
-# define PARSER_NLIGTHS_FAIL			"Problem with number of lines for lights"
+# define PARSER_NOBJECTS_FAIL	"Problem with number of lines for objects"
+# define PARSER_NLIGTHS_FAIL	"Problem with number of lines for lights"
 
 # define PARSER_SCENE_ID_FAIL			"Problem with scene identifier"
 

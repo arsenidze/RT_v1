@@ -6,7 +6,7 @@
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 12:27:42 by amelihov          #+#    #+#             */
-/*   Updated: 2018/05/15 18:30:01 by amelihov         ###   ########.fr       */
+/*   Updated: 2018/07/06 14:12:32 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define ERRORS_H
 
 # include "errors.h"
+# include "errors_defines.h"
 
 /*
 **	set_err:
@@ -38,7 +39,5 @@ void	try_set_err(char *err);
 **	printf value of error variable, if prefix is not NULL add it at begin
 */
 int		err_print(char *prefix);
-
-# include "errors_defines.h"
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/27 19:49:59 by amelihov          #+#    #+#             */
-/*   Updated: 2018/06/07 21:34:28 by amelihov         ###   ########.fr       */
+/*   Updated: 2018/07/06 14:15:01 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@
 /*
 **	components indexs
 */
-#define L_AMBIENT		0
-#define L_DIFFUSE		1
-#define L_SPECULAR		2
+# define L_AMBIENT		0
+# define L_DIFFUSE		1
+# define L_SPECULAR		2
 
 typedef struct	s_light
 {

@@ -6,7 +6,7 @@
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/13 12:58:34 by amelihov          #+#    #+#             */
-/*   Updated: 2018/07/05 23:06:06 by amelihov         ###   ########.fr       */
+/*   Updated: 2018/07/06 15:22:19 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,31 @@
 #include "errors.h"
 #include "libft.h"
 
-static t_object	*parse_object_failure(char *err)
+static short	parse_object_attributes_failure(char *err)
 {
 	try_set_err(err);
-	return (NULL);
+	return (0);
+}
+
+static short	parse_object_attributes(char *line, int *i,
+				t_vect3d components[3])
+{
+	if (!parse_attr_of_type_vect3d(line, i, AMBNT, &components[0])
+		|| !vect3d_is_in_range(components[0], 0, 1))
+		return (parse_object_attributes_failure(PARSER_OBJECT_AMBIENT_FAIL));
+	if (!(skip_separator(line, i)))
+		return (parse_object_attributes_failure(PARSER_OBJECT_SEPARATOR_FAIL));
+	if (!parse_attr_of_type_vect3d(line, i, DIFF, &components[1])
+		|| !vect3d_is_in_range(components[1], 0, 1))
+		return (parse_object_attributes_failure(PARSER_OBJECT_DIFFUSE_FAIL));
+	if (!(skip_separator(line, i)))
+		return (parse_object_attributes_failure(PARSER_OBJECT_SEPARATOR_FAIL));
+	if (!parse_attr_of_type_vect3d(line, i, SPEC, &components[2])
+		|| !vect3d_is_in_range(components[2], 0, 1))
+		return (parse_object_attributes_failure(PARSER_OBJECT_SPECULAR_FAIL));
+	if (!(skip_separator(line, i)))
+		return (parse_object_attributes_failure(PARSER_OBJECT_SEPARATOR_FAIL));
+	return (1);
 }
 
 static t_object	*(*match_primitive_parser(char *value))(char *line,
@@ -35,6 +56,12 @@ static t_object	*(*match_primitive_parser(char *value))(char *line,
 	return (NULL);
 }
 
+static t_object	*parse_object_failure(char *err)
+{
+	try_set_err(err);
+	return (NULL);
+}
+
 t_object		*parse_object(char *line)
 {
 	int			i;
@@ -45,21 +72,8 @@ t_object		*parse_object(char *line)
 	if (!ft_strnequ(line, "\t"OBJECT_ID":", ID_LEN(OBJECT_ID) + 2))
 		return (parse_object_failure(PARSER_OBJECT_ID_FAIL));
 	i = ID_LEN(OBJECT_ID) + 2;
-	if (!parse_attr_of_type_vect3d(line, &i, AMBNT, &components[0])
-		|| !vect3d_is_in_range(components[0], 0, 1))
-		return (parse_object_failure(PARSER_OBJECT_AMBIENT_FAIL));
-	if (!(skip_separator(line, &i)))
-		return (parse_object_failure(PARSER_OBJECT_SEPARATOR_FAIL));
-	if (!parse_attr_of_type_vect3d(line, &i, DIFF, &components[1])
-		|| !vect3d_is_in_range(components[1], 0, 1))
-		return (parse_object_failure(PARSER_OBJECT_DIFFUSE_FAIL));
-	if (!(skip_separator(line, &i)))
-		return (parse_object_failure(PARSER_OBJECT_SEPARATOR_FAIL));
-	if (!parse_attr_of_type_vect3d(line, &i, SPEC, &components[2])
-		|| !vect3d_is_in_range(components[2], 0, 1))
-		return (parse_object_failure(PARSER_OBJECT_SPECULAR_FAIL));
-	if (!(skip_separator(line, &i)))
-		return (parse_object_failure(PARSER_OBJECT_SEPARATOR_FAIL));
+	if (!parse_object_attributes(line, &i, components))
+		return (parse_object_failure(""));
 	if (!(value = get_value_of_attr_with_name(line, &i, PRIMIT)))
 		return (parse_object_failure(PARSER_OBJECT_PRIMITIVE_FAIL));
 	if (!(primitive_parser = match_primitive_parser(value)))

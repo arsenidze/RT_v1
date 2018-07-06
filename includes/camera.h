@@ -6,7 +6,7 @@
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 09:44:22 by amelihov          #+#    #+#             */
-/*   Updated: 2018/07/05 21:39:59 by amelihov         ###   ########.fr       */
+/*   Updated: 2018/07/06 13:10:00 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,10 @@
 # define CAMERA_H
 
 # include "vect3d.h"
-/*
-# define CAMERA_SUCCESS 0
-# define CAMERA_FAILURE 1
-*/
 
 typedef struct	s_camera
 {
-	t_vect3d	pos;	
+	t_vect3d	pos;
 	t_vect3d	dir;
 	t_vect3d	up;
 	t_vect3d	left;
