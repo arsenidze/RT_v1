@@ -1,9 +1,0 @@
-4
-1
-scene:
-	camera: pos[9999, 0, 0], dir[-1, 0, 0], up[0, 0, 1];
-	object: ambient[0.4, 0.4, 0], diffuse[0.4, 0.4, 0], specular[0.9, 0.9, 0.9], primitive[cylinder], pos[-50, 0, 0], axis[0, 0, 1], radius[50];
-	object: ambient[0.3, 0.3, 0], diffuse[0.3, 0.3, 0], specular[0, 0, 0], primitive[sphere], pos[0, -50, 0], radius[100];
-	object: ambient[0.3, 0.3, 0], diffuse[0.3, 0.3, 0], specular[0, 0, 0], primitive[sphere], pos[0, 50, 0], radius[100];
-	object: ambient[0.8, 0.3, 0], diffuse[0.3, 0.9, 0], specular[0, 0, 0], primitive[plane], pos[0, 0, -10], normal[0, 0, 1];
-	light: pos[500, -200, 0], ambient[0.4, 0.4, 0.4], diffuse[0.4, 0.4, 0.4], specular[1, 1, 1];

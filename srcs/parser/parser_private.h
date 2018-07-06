@@ -6,7 +6,7 @@
 /*   By: amelihov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/10 11:31:07 by amelihov          #+#    #+#             */
-/*   Updated: 2018/07/05 23:04:54 by amelihov         ###   ########.fr       */
+/*   Updated: 2018/07/06 16:44:31 by amelihov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,15 +57,15 @@
 # define MAX_NOBJECTS_NDIGITS	2
 # define MAX_NLIGHTS_NDIGITS		2
 
-# define MAX_DOUBLE				9999.9999
-# define MAX_INT					9999
+# define MAX_DOUBLE				99999.99999
+# define MAX_INT				99999
 
-# define MAX_NDIGITS_INT			4
-# define MAX_NDIGITS_FRACT		4
+# define MAX_NDIGITS_INT		5
+# define MAX_NDIGITS_FRACT		5
 # define MAX_NDIGITS_DOUBLE		(MAX_NDIGITS_INT + 1 + MAX_NDIGITS_FRACT)
 
-# define MIN_POS					-10000
-# define MAX_POS					10000
+# define MIN_POS				-100000
+# define MAX_POS				100000
 # define MAX_RADIUS				1000
 # define MAX_SLOPE				1
 
