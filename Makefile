@@ -6,7 +6,7 @@
 #    By: amelihov <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/29 13:43:11 by amelihov          #+#    #+#              #
-#    Updated: 2018/07/06 17:52:42 by amelihov         ###   ########.fr        #
+#    Updated: 2018/07/06 18:57:41 by amelihov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,13 +15,10 @@ NAME = RTv1
 CC     = gcc
 LD     = $(CC)
 
-SRC_DIR = srcs
-OBJ_DIR = obj
-INC_DIR = includes
-LIB_DIR = lib
-
-#SRC = $(wildcard $(SRC_DIR)/*.c) $(wildcard $(SRC_DIR)/*/*.c)
-#OBJ = $(addprefix $(OBJ_DIR)/, $(notdir $(SRC:.c=.o)))
+SRC_DIR = ./srcs
+OBJ_DIR = ./obj
+INC_DIR = ./includes
+LIB_DIR = ./lib
 
 SRC = \
 	camera.c\
@@ -90,10 +87,10 @@ SRC = \
 	vect3d_mult_on_matrix.c\
 	vect3d_mult_on_scalar.c\
 	vect3d_norm.c\
-	vect3d_sq_len.c
+	vect3d_sq_len.c\
 
-OBJ = $(SRC:.c=.o)
-
+OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
+	
 INC = \
 	apply_light.h\
 	camera.h\
@@ -123,46 +120,26 @@ INC = \
 	vect3d.h\
 	parser_private.h\
 
-
-testO:
-	$(OBJ)
-
-testS:
-	$(SRC)
-
-#INC = $(INC_DIR)/*.h
-
 LIBFT = $(LIB_DIR)/libft/libft.a
 LIBFT_INC = $(LIB_DIR)/libft/includes/
 LIBFT_FLAGS = -lft -L $(LIB_DIR)/libft/
 
-SDL_INC =	-I ./lib/Frameworks/SDL2.framework/Headers/
-SDL_FLAGS = -F ./lib/Frameworks -framework SDL2
+SDL_INC 	= ./lib/Frameworks/SDL2.framework/Headers/
+SDL_FLAGS	= -F ./lib/Frameworks -framework SDL2 -rpath ./lib/Frameworks
 
-CFLAGS = -Wall -Wextra -Werror -g
-HFLAGS = -I $(PWD)/$(INC_DIR) -I $(PWD)/$(LIBFT_INC) $(SDL_INC) 
+CFLAGS = -Wall -Wextra -Werror -O3
+HFLAGS = -I $(INC_DIR) -I $(LIBFT_INC) -I $(SDL_INC) 
 LFLAGS = $(LIBFT_FLAGS) $(SDL_FLAGS) 
-
-#testO:
-#	$(OBJ)
-#
-#testS:
-#	$(SRC)
 
 all:
 	make -C $(LIB_DIR)/libft/
 	make $(NAME)
 
 $(NAME): $(OBJ) $(LIBFT) Makefile
-	$(LD) $(OBJ) $(LFLAGS) -rpath ./lib/Frameworks -o $(NAME)
+	$(LD) $(OBJ) $(LFLAGS) -o $(NAME)
 
-%.o: %.c $(INC)
+$(OBJ_DIR)/%.o: %.c $(INC)
 	$(CC) $(CFLAGS) $(HFLAGS) -c $< -o $@
-#$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INC)
-#	$(CC) $(CFLAGS) $(HFLAGS) -c $< -o $@
-#
-#$(OBJ_DIR)/%.o: $(SRC_DIR)/*/%.c $(INC)
-#	$(CC) $(CFLAGS) $(HFLAGS) -c $< -o $@
 
 $(OBJ): | $(OBJ_DIR)
 
@@ -180,7 +157,20 @@ fclean: clean
 
 re: fclean all
 
-vpath %.c $(SRC)
-vpath %.c $(SRC)/*
+vpath %.c $(SRC_DIR)
+vpath %.c $(SRC_DIR)/camera
+vpath %.c $(SRC_DIR)/default_scenes
+vpath %.c $(SRC_DIR)/drawer
+vpath %.c $(SRC_DIR)/events
+vpath %.c $(SRC_DIR)/light
+vpath %.c $(SRC_DIR)/mmath
+vpath %.c $(SRC_DIR)/object
+vpath %.c $(SRC_DIR)/parser
+vpath %.c $(SRC_DIR)/primitives
+vpath %.c $(SRC_DIR)/raytracing
+vpath %.c $(SRC_DIR)/scene
+vpath %.c $(SRC_DIR)/vect3d
+vpath %.h $(INC_DIR)
+vpath %.h $(SRC_DIR)/parser
 
-.PHONY: all clean fclean re depend
+.PHONY: all clean fclean re
